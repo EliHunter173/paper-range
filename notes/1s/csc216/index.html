@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      Eli
+      
+      | CSC 216: Intro to Software Engineering &amp; Programming Concepts
+      
+    </title>
+    <link rel="stylesheet" href="/styles.css">
+
+    
+    
+    
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        }
+      }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+  </head>
+
+  <body>
+    <nav>
+      <h2><a href="/">~eli</a></h2>
+      <ul>
+        <li><a href="/blog/">blog</a></li>
+        <li><a href="/notes/">notes</a></li>
+        <li><a href="/elihunter173_resume.pdf">résumé</a></li>
+      </ul>
+    </nav>
+
+    
+<header>
+  <h1 class="title">CSC 216: Intro to Software Engineering &amp; Programming Concepts</h1>
+  
+  Instructor: Dr. Sarah Heckman | Semester: Spring 2019
+
+  
+  <h3>Table of Contents</h3>
+  <ul>
+    
+    <li>
+      <a href="#administrivia">Administrivia</a>
+    </li>
+    
+    <li>
+      <a href="#object-oriented-design-oo">Object Oriented Design (OO)</a>
+    </li>
+    
+    <li>
+      <a href="#java-libraries">(Java) Libraries</a>
+    </li>
+    
+    <li>
+      <a href="#design-patterns">Design Patterns</a>
+    </li>
+    
+    <li>
+      <a href="#design-suggestions">Design Suggestions</a>
+    </li>
+    
+    <li>
+      <a href="#software-engineering-design">Software Engineering &amp; Design</a>
+    </li>
+    
+    <li>
+      <a href="#algorithmic-efficiency">Algorithmic Efficiency</a>
+    </li>
+    
+    <li>
+      <a href="#data-structures">Data Structures</a>
+    </li>
+    
+    <li>
+      <a href="#data-structure-modification">Data Structure Modification</a>
+    </li>
+    
+    <li>
+      <a href="#finite-state-machines">Finite State Machines</a>
+    </li>
+    
+    <li>
+      <a href="#recursion">Recursion</a>
+    </li>
+    
+    <li>
+      <a href="#misc-1">Misc</a>
+    </li>
+    
+  </ul>
+  
+</header>
+
+<article><h1 id="administrivia"><a href="#administrivia" aria-label="anchor link for administrivia">#</a> 
+Administrivia</h1>
+<h2 id="grades"><a href="#grades" aria-label="anchor link for grades">##</a> 
+Grades</h2>
+<table><thead><tr><th>Weight</th><th>Component</th><th>Additional Info</th></tr></thead><tbody>
+<tr><td>12%</td><td>Guided Projects</td><td></td></tr>
+<tr><td>34%</td><td>Projects</td><td>Two projects. 3% of each is part 1. 14% of each is part 2.</td></tr>
+<tr><td>Guided Projects</td><td>12</td><td></td></tr>
+<tr><td>Labs</td><td>15</td><td></td></tr>
+<tr><td>Exam 1</td><td>12</td><td>Exam 1 will cover material from approximately the first third of the course.</td></tr>
+<tr><td>Exam 2</td><td>12</td><td>Exam 2 will cover material from approximately the first two-thirds of the course.</td></tr>
+<tr><td>Exam 3</td><td>15</td><td>Exam 3 will cover all materials for the course.</td></tr>
+</tbody></table>
+<ul>
+<li>Need &gt;65% on exams to get a C or higher</li>
+</ul>
+<h2 id="lecture"><a href="#lecture" aria-label="anchor link for lecture">##</a> 
+Lecture</h2>
+<ul>
+<li>Attendance: You must answer at least one of the Google form exercises per
+class.
+<ul>
+<li>If miss 4+ labs, -5 pt on final grade.</li>
+</ul>
+</li>
+<li>Instructor: Dr. Sarah Heckman (sesmith5)</li>
+<li>Email: sarah_heckman@ncsu.edu</li>
+<li>Web Page: <a href="https://people.engr.ncsu.edu/sesmith5/">https://people.engr.ncsu.edu/sesmith5/</a></li>
+<li>Phone: 919-515-2042</li>
+<li>Office Location: Engineering Building II, Room 2297</li>
+<li>Office Hours: (See calendar for most up-to-date office hours)</li>
+</ul>
+<h2 id="lab"><a href="#lab" aria-label="anchor link for lab">##</a> 
+Lab</h2>
+<ul>
+<li>Name: Hanna Fernandez</li>
+<li>Email: hfernan@ncsu.edu</li>
+<li>Jenkins: go.ncsu.edu/jenkins-csc216-2</li>
+<li>Attendance: Required.
+<ul>
+<li>Missing 4 labs will result in F</li>
+</ul>
+</li>
+<li>A lab grade may be dropped.</li>
+</ul>
+<h2 id="assignments"><a href="#assignments" aria-label="anchor link for assignments">##</a> 
+Assignments</h2>
+<ul>
+<li>Projects:
+<ul>
+<li>Part 1: Design and black-box testing. Independent.</li>
+<li>Part 2: Implementation and testing. Optionally independent.</li>
+</ul>
+</li>
+<li>Guided Projects:
+<ul>
+<li>There will be 3.</li>
+<li>All independent.</li>
+</ul>
+</li>
+</ul>
+<h2 id="academic-integrity"><a href="#academic-integrity" aria-label="anchor link for academic-integrity">##</a> 
+Academic Integrity</h2>
+<ul>
+<li>We follow the <a href="https://www.acm.org/code-of-ethics">ACM Code of Ethics and Professionalism</a></li>
+<li>All work must be own.</li>
+<li>Cheating results in -100 for assignment.</li>
+<li>TA's are &quot;Peer Teaching Fellows&quot;</li>
+</ul>
+<h2 id="main-topics"><a href="#main-topics" aria-label="anchor link for main-topics">##</a> 
+Main Topics</h2>
+<ul>
+<li>Managing Complex Software: Software gets big. How do you handle it?
+<ul>
+<li>Tools: Eclipse :(</li>
+</ul>
+</li>
+<li>Test Driven Development: Writing tests first and then trying to make it so
+that your code passes those tests.
+<ul>
+<li>Tools: JUnit 4</li>
+</ul>
+</li>
+<li>Code Coverage: How much code is being tested</li>
+<li>Static Analysis: Looks at the code itself.
+<ul>
+<li>Tools: Checkstyle, SpotBugs, PMD, EclEmma</li>
+</ul>
+</li>
+<li>Version Control: Manages source code across machines and tracks and merges
+changes.
+<ul>
+<li>Tools: Git</li>
+</ul>
+</li>
+<li>Continuous Integration: Whenever there is a change in the repository, test the
+code.
+<ul>
+<li>Tools: Jenkins</li>
+</ul>
+</li>
+</ul>
+<h1 id="object-oriented-design-oo"><a href="#object-oriented-design-oo" aria-label="anchor link for object-oriented-design-oo">#</a> 
+Object Oriented Design (OO)</h1>
+<p><em>N.B. These are defined with reference to Java.</em></p>
+<ul>
+<li>Procedural: Execute code without objects. Everything is simply a list of
+of things to run (i.e. a procedure!).</li>
+<li>Object Oriented: We deal with objects, representations of real things,
+which can interact with other objects and classes in limited, controlled ways.</li>
+<li>Method: A list of statements to run.
+<ul>
+<li>Static: A method which isn't connected to an object.</li>
+<li>Non-static: A method which is connected to an object.</li>
+</ul>
+</li>
+<li>Class: A blueprint for an object. Has a list of methods and fields that
+each object should have, and it defines what each of those methods do
+(normally) and what type those fields are.</li>
+<li>Object: An instance of a class. Takes up space in memory (well, most
+objects are really just <em>reference</em> objects) which defines the fields. It can
+leverage the methods it has given to it by the class to do stuff with its
+fields.</li>
+<li>Reference Objects / Pointers: A much, much smaller bit of information
+that simply points to a place in memory. When you &quot;copy&quot; objects normally in
+Java, it just copies the reference object / the pointer</li>
+</ul>
+<h2 id="faq"><a href="#faq" aria-label="anchor link for faq">##</a> 
+FAQ</h2>
+<ul>
+<li><em>Why use abstract classes and interfaces?</em> To promote code reuse and make
+sure that methods can be interacted with in a standard way. Abstract classes
+<strong>promise</strong> that there will be some functionality.</li>
+<li><em>Why make the distinction?</em> Because, in Java, you can only <code>extend</code> a single
+class but you can <code>implement</code> as many interfaces as you want.</li>
+<li><em>How do you Javadoc abstract methods?</em> Provide high-level guidance to what
+functionality is expected from this method.</li>
+<li><em>How do you Javadoc interfaces?</em> Provide similar comments like abstract
+classes, but even better because they are so broad.</li>
+<li><em>Why use interfaces if you're just going to use it once?</em> (A) It makes more
+sense. (B) It makes it easier for you to add more things in the future. (C)
+You might not be the only one who wants to use something like that.</li>
+<li><em>Can you cast a parent to a child?</em> Nope! Well, technically, yes but only if
+the child doesn't add anything on top of the parent. <strong>But, all children add
+at least a pointer to the parent.</strong></li>
+</ul>
+<h2 id="vocabulary"><a href="#vocabulary" aria-label="anchor link for vocabulary">##</a> 
+Vocabulary</h2>
+<ul>
+<li>Single Inheritance: A class can only inherit a single class or have a single parent.
+<ul>
+<li><em>Why?</em> To prevent name space clashing (although this does have other solutions).</li>
+</ul>
+</li>
+<li>Polymorphism: Where you can treat multiple different types (of objects) as
+the same type.
+<ul>
+<li>This is normally visualized, in Java, as a hierarchy of classes, like a
+family tree.</li>
+</ul>
+</li>
+<li>Abstract Class: Classes that can have <code>abstract</code> methods.
+<ul>
+<li>Concrete children <code>extends</code> this abstract class but can only implement one.</li>
+<li><strong>Consider nouns.</strong></li>
+</ul>
+</li>
+<li>Abstract Method: An exposed method in an abstract class (since it must be</li>
+<li>implemented in a child).</li>
+<li>Interfaces: Special classes that only describe abstract methods.
+<ul>
+<li>Concrete children <code>implements</code> this interface and can implement many.</li>
+<li>All classes are <code>public</code> and <code>abstract</code> (because nothing else matters to
+outsiders).</li>
+</ul>
+</li>
+<li>Abstract classes and interfaces cannot be instantiated.
+<ul>
+<li>Abstract classes can specify constructors, however.</li>
+</ul>
+</li>
+<li>Delegation: The process of wrapping an Object so that it uses the Object's
+behaviors as its behaviors.</li>
+</ul>
+<h2 id="methods"><a href="#methods" aria-label="anchor link for methods">##</a> 
+Methods</h2>
+<ul>
+<li>Methods have a signature, which is their name and parameter types.</li>
+<li>Parameters have a type and can be <code>final</code>.</li>
+<li>Syntax: <code>accessMod [static] ReturnType name([final] Type param1, [final] Type param2)</code></li>
+</ul>
+<h2 id="semantics"><a href="#semantics" aria-label="anchor link for semantics">##</a> 
+Semantics</h2>
+<ul>
+<li>Value Semantics: This bit of data is dealt with directly. That is its
+actual information in memory.</li>
+<li>Reference Semantics: This bit of data is interacted with by a reference
+object / pointer.</li>
+<li>Dereferencing: Accessing the data or the method of an object.
+<ul>
+<li>Dot Notation: The process of accessing the methods of a reference.
+<ul>
+<li>e.g. <code>reference.method()</code>, <code>reference.field</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="null-semantics"><a href="#null-semantics" aria-label="anchor link for null-semantics">###</a> 
+Null Semantics</h3>
+<ul>
+<li><code>null</code>: A built in value that does not refer to any object.
+<ul>
+<li>It cannot be dereferenced!</li>
+</ul>
+</li>
+<li><code>null</code> can be passed, initialized, checked for, returned (for bad data), etc!</li>
+</ul>
+<h3 id="java-specifics-oddities"><a href="#java-specifics-oddities" aria-label="anchor link for java-specifics-oddities">###</a> 
+Java Specifics/Oddities</h3>
+<ul>
+<li>Java uses <em>reference semantics</em> for all objects and <em>value semantics</em> for all
+primitives.</li>
+<li>Implicit Parameter: <code>this</code> is an implied parameter in all methods of an
+object. It references the current object.</li>
+<li>Default Values: All types have specific default values.
+<ul>
+<li><code>int</code> = 0</li>
+<li><code>double</code> = 0.0</li>
+<li><code>boolean</code> = false</li>
+<li><code>char</code> = null (character)</li>
+<li><code>Object</code> = null (object)</li>
+</ul>
+</li>
+</ul>
+<h3 id="invariants"><a href="#invariants" aria-label="anchor link for invariants">###</a> 
+Invariants</h3>
+<ul>
+<li>Invariants: Things which you state are going to be always true. You must
+ensure it.
+<ul>
+<li><em>Java Invariants:</em> If you override <code>equals()</code>, you should also override
+<code>hashCode()</code></li>
+<li><code>hashCode()</code>: Hashes an objects</li>
+</ul>
+</li>
+</ul>
+<h3 id="cloning"><a href="#cloning" aria-label="anchor link for cloning">###</a> 
+Cloning</h3>
+<ul>
+<li><code>.clone()</code>: Returns a shallow copy of a given object. <em>This comes from <code>interface Cloneable</code></em></li>
+<li><em>What about deep copies?</em></li>
+</ul>
+<h2 id="composition-and-delegation"><a href="#composition-and-delegation" aria-label="anchor link for composition-and-delegation">##</a> 
+Composition and Delegation</h2>
+<ul>
+<li>Composition: A class has fields that are instances of other class(es).</li>
+<li>Delegation: The course can call upon methods and other things of the
+objects it contains. Allows an object to not get too complex!</li>
+<li>Abstraction: The process of separating ideas so you don't have to know
+everything! This is the beauty of OOD.</li>
+<li>Encapsulation: Hide the plumbing or implementation details from the
+clients. They don't need to know and they might mess things up!
+<ul>
+<li>Ways: Make fields private so you can control what people do.</li>
+</ul>
+</li>
+</ul>
+<h2 id="inheritance"><a href="#inheritance" aria-label="anchor link for inheritance">##</a> 
+Inheritance</h2>
+<ul>
+<li>Hierarchical. Allows <em>specialization</em> of broader class.</li>
+<li>The super class (parent) is ignorant of the sub class (child)</li>
+<li>Super class constructed first. That means that the sub class can override parts of the super
+class and a sub class has a pointer to its parent.</li>
+<li>The sub class is an <em>instance of</em> the super class.</li>
+<li>A child cannot modify the <code>private</code> variables of its parent.
+<ul>
+<li>However, it can modify <code>protected</code> variables. (But those are yuck!)</li>
+</ul>
+</li>
+<li>Everything in a hierarchy should define its own equals methods. Then, the child checks the
+parent's equality and then checks its specialization.</li>
+</ul>
+<h3 id="java-syntax"><a href="#java-syntax" aria-label="anchor link for java-syntax">###</a> 
+Java Syntax</h3>
+<ul>
+<li><code>extends</code>: Shows parent/superclass of child/subclass</li>
+<li><code>super</code>: References the parent/superclass of the current class.</li>
+<li>A class can only extend one class.</li>
+</ul>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#93a1a1;">public </span><span style="color:#268bd2;">class </span><span style="color:#b58900;">SubClass </span><span style="color:#859900;">extends </span><span style="color:#268bd2;">SuperClass </span><span style="color:#657b83;">{
+  </span><span style="color:#586e75;">// This class has all of the (implemented)
+  // functionality of the super class
+</span><span style="color:#657b83;">}
+</span></code></pre><h3 id="usage"><a href="#usage" aria-label="anchor link for usage">###</a> 
+Usage</h3>
+<ul>
+<li>Children are <em>clients</em> of the parent and must use accessor/mutator methods to
+modify those fields.</li>
+<li>A child can act as its parent. <em>A parent can not act like its child.</em></li>
+<li>If a child is acting as a parent, you cannot reference any of the child's
+(childish) things.</li>
+</ul>
+<h2 id="abstract-class"><a href="#abstract-class" aria-label="anchor link for abstract-class">##</a> 
+Abstract Class</h2>
+<ul>
+<li>If you use interfaces or abstract classes to interact with someting, you can <em>only</em> interact
+with the methods present in those interfaces or abstract classes.</li>
+</ul>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#93a1a1;">public abstract </span><span style="color:#268bd2;">class </span><span style="color:#b58900;">Beer
+</span><span style="color:#859900;">implements </span><span style="color:#268bd2;">Drinkable</span><span style="color:#839496;">, </span><span style="color:#268bd2;">Brewable </span><span style="color:#657b83;">{
+
+  </span><span style="color:#93a1a1;">private </span><span style="color:#859900;">String </span><span style="color:#839496;">name;
+
+  </span><span style="color:#93a1a1;">public </span><span style="color:#b58900;">Beer</span><span style="color:#657b83;">(</span><span style="color:#859900;">String </span><span style="color:#268bd2;">name</span><span style="color:#657b83;">) {
+    </span><span style="color:#d33682;">this</span><span style="color:#839496;">.name </span><span style="color:#657b83;">=</span><span style="color:#839496;"> name;
+  </span><span style="color:#657b83;">}
+
+  </span><span style="color:#586e75;">// Declare abstract methods
+  </span><span style="color:#93a1a1;">public abstract </span><span style="color:#268bd2;">boolean
+  </span><span style="color:#b58900;">addIngredient</span><span style="color:#657b83;">(</span><span style="color:#859900;">BeerIngredient </span><span style="color:#268bd2;">i</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+  </span><span style="color:#93a1a1;">public abstract </span><span style="color:#859900;">Collection</span><span style="color:#839496;">&lt;</span><span style="color:#859900;">BeerIngredient</span><span style="color:#839496;">&gt;
+  </span><span style="color:#b58900;">getIngredients</span><span style="color:#657b83;">()</span><span style="color:#839496;">;
+
+  </span><span style="color:#586e75;">// Implement inherited methods
+  </span><span style="color:#93a1a1;">public </span><span style="color:#268bd2;">void </span><span style="color:#b58900;">brew</span><span style="color:#657b83;">() {
+    </span><span style="color:#859900;">System</span><span style="color:#839496;">.out.</span><span style="color:#b58900;">println</span><span style="color:#657b83;">(
+</span><span style="color:#839496;">      name </span><span style="color:#657b83;">+ </span><span style="color:#839496;">&quot;</span><span style="color:#2aa198;"> is being brewed</span><span style="color:#839496;">&quot;
+    </span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+  </span><span style="color:#657b83;">}
+
+  </span><span style="color:#586e75;">// I don&#39;t have to implement Drinkable because
+  // this is an abstract class
+</span><span style="color:#657b83;">}
+</span></code></pre><h2 id="interface"><a href="#interface" aria-label="anchor link for interface">##</a> 
+Interface</h2>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#93a1a1;">public </span><span style="color:#268bd2;">interface </span><span style="color:#b58900;">Brewable </span><span style="color:#657b83;">{
+  </span><span style="color:#268bd2;">void </span><span style="color:#b58900;">brew</span><span style="color:#657b83;">()</span><span style="color:#839496;">;
+</span><span style="color:#657b83;">}
+</span></code></pre><h2 id="nested-classes"><a href="#nested-classes" aria-label="anchor link for nested-classes">##</a> 
+Nested Classes</h2>
+<ul>
+<li>Outer Class: A class that contains an inner class.</li>
+<li>Inner Class: A class defined within another class.</li>
+<li>Compiled Bytecode Class Names: <code>OuterClass$InnerClass.class</code></li>
+<li>In UML Diagrams:
+<ul>
+<li>Composition connector (black diamond)</li>
+<li>Inner-class connector (white circle with black x)</li>
+</ul>
+</li>
+<li>Static Nested Class: A <code>static</code> class inside of an outer class.
+<ul>
+<li>These can <em>only</em> access the outer class's instance values.</li>
+</ul>
+</li>
+<li>To access parent outer explicitly use <code>OuterClass.this</code>.</li>
+<li>To access public inner class, use <code>OuterClass.InnerClass</code>.</li>
+</ul>
+<h3 id="advantages"><a href="#advantages" aria-label="anchor link for advantages">###</a> 
+Advantages</h3>
+<ul>
+<li>Encapsulation: Clients don't have to worry about them (if they're private)</li>
+<li>Inner classes can change the instance fields of their outer class.
+<ul>
+<li><em>It cannot access the nested classes fields!</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="anonymous-objects"><a href="#anonymous-objects" aria-label="anchor link for anonymous-objects">##</a> 
+Anonymous Objects</h2>
+<ul>
+<li>Anonymous Object: An object that is created with no reference to it.</li>
+</ul>
+<h2 id="anonymous-classes"><a href="#anonymous-classes" aria-label="anchor link for anonymous-classes">##</a> 
+Anonymous Classes</h2>
+<ul>
+<li>Anonymous Classes: Creating a class in-line. A class that has no real name
+<ul>
+<li>Mostly used when creating an interface that implements some methods.</li>
+</ul>
+</li>
+</ul>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#859900;">new Foo</span><span style="color:#657b83;">() {
+  </span><span style="color:#93a1a1;">public </span><span style="color:#268bd2;">int </span><span style="color:#839496;">someState;
+  </span><span style="color:#93a1a1;">public </span><span style="color:#268bd2;">void </span><span style="color:#b58900;">doStuff</span><span style="color:#657b83;">() {
+    </span><span style="color:#586e75;">// Do things
+  </span><span style="color:#657b83;">}
+}
+</span></code></pre><h2 id="exceptions"><a href="#exceptions" aria-label="anchor link for exceptions">##</a> 
+Exceptions</h2>
+<ul>
+<li>Exception: A special object that represents an error or bad condition.
+<ul>
+<li>Unchecked Exception: Exception that doesn't have to be handled to be compiled.</li>
+<li>Java Examples: <code>InputMismatchException</code></li>
+<li>For Java: extend <code>RuntimeException</code></li>
+<li>Checked Exception: Exception that must be handled to be compiled.</li>
+<li>Java Examples: <code>FileNotFoundException</code></li>
+<li>For Java: extend <code>Exception</code></li>
+<li>Checked vs Unchecked is semi-arbitrarily decided by Java language developers.</li>
+</ul>
+</li>
+<li><code>throw</code>: A keyword that throws an object that implements the <code>Throwable</code> interface.</li>
+<li><code>throws</code>: A keyword in the method header that states that the stated exception might be generated</li>
+</ul>
+<h3 id="try-catch-finally-blocks"><a href="#try-catch-finally-blocks" aria-label="anchor link for try-catch-finally-blocks">###</a> 
+Try-Catch-Finally Blocks</h3>
+<ul>
+<li>Try: Statements that might throw exception.
+<ul>
+<li>Mandatory block.</li>
+</ul>
+</li>
+<li>Catch: Statements that handle exception.
+<ul>
+<li>Mandatory block.</li>
+</ul>
+</li>
+<li>Finally: Statements that always execute. Good place for closing resources.
+<ul>
+<li>Optional block.</li>
+</ul>
+</li>
+<li>Normal Flow: Specific exception, less specific exception, general exception</li>
+<li>Multi-catch: Can catch a list of exceptions in a common catch block.
+<ul>
+<li>For Java 1.7+</li>
+</ul>
+</li>
+<li>Try-with-Resources: Declares one or more resources that must be closed. Essentially automatically
+closes resources when necessary. (Opened resources must implement <code>Autoclosable</code>)
+<ul>
+<li>Alternative to try.</li>
+<li>For Java 1.7+</li>
+</ul>
+</li>
+</ul>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#859900;">try </span><span style="color:#657b83;">{
+  </span><span style="color:#586e75;">// Do things
+</span><span style="color:#657b83;">} </span><span style="color:#859900;">catch </span><span style="color:#657b83;">(</span><span style="color:#859900;">ExceptionType </span><span style="color:#268bd2;">name</span><span style="color:#657b83;">) {
+  </span><span style="color:#586e75;">// Handle errors
+</span><span style="color:#657b83;">}
+</span></code></pre><pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#859900;">try </span><span style="color:#657b83;">{
+  </span><span style="color:#586e75;">// Statements
+  // Exception thrown!
+  // Statements skipped
+</span><span style="color:#657b83;">} </span><span style="color:#859900;">catch </span><span style="color:#657b83;">(</span><span style="color:#859900;">UnmatchedExceptionType </span><span style="color:#268bd2;">name</span><span style="color:#657b83;">) {
+  </span><span style="color:#586e75;">// Would handle exception, but doesn&#39;t go in
+  // here
+</span><span style="color:#657b83;">} </span><span style="color:#859900;">catch </span><span style="color:#657b83;">(</span><span style="color:#859900;">MatchedExceptionType </span><span style="color:#268bd2;">name</span><span style="color:#657b83;">) {
+  </span><span style="color:#586e75;">// Handle thrown exception
+</span><span style="color:#657b83;">} </span><span style="color:#859900;">catch </span><span style="color:#657b83;">(</span><span style="color:#859900;">AlsoMatchedExceptionType </span><span style="color:#268bd2;">name</span><span style="color:#657b83;">) {
+  </span><span style="color:#586e75;">// Would handle exception, but goes to first
+  // catch block.
+</span><span style="color:#657b83;">} </span><span style="color:#859900;">finally </span><span style="color:#657b83;">{
+  </span><span style="color:#586e75;">// Statements here are always executed!
+</span><span style="color:#657b83;">}
+</span></code></pre><pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#859900;">try </span><span style="color:#657b83;">{
+  </span><span style="color:#586e75;">// Throws either Exception1 or Exception2,
+  // that need to be handled equally
+</span><span style="color:#657b83;">} </span><span style="color:#859900;">catch </span><span style="color:#657b83;">(</span><span style="color:#859900;">Exception1 </span><span style="color:#839496;">| </span><span style="color:#859900;">Exception2 </span><span style="color:#268bd2;">name</span><span style="color:#657b83;">) {
+  </span><span style="color:#586e75;">// Handle exceptions
+</span><span style="color:#657b83;">}
+</span></code></pre><pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#859900;">try </span><span style="color:#657b83;">(</span><span style="color:#859900;">File</span><span style="color:#839496;"> f </span><span style="color:#657b83;">= </span><span style="color:#859900;">new File</span><span style="color:#657b83;">()) {
+  </span><span style="color:#586e75;">// May throw FileNotFoundException
+</span><span style="color:#657b83;">} </span><span style="color:#859900;">catch </span><span style="color:#657b83;">(</span><span style="color:#859900;">FileNotFoundException </span><span style="color:#268bd2;">e</span><span style="color:#657b83;">) {
+  </span><span style="color:#586e75;">// Handle exception
+</span><span style="color:#657b83;">}
+</span><span style="color:#586e75;">// Resources automatically closed!
+</span></code></pre><h3 id="create-custom-exceptions"><a href="#create-custom-exceptions" aria-label="anchor link for create-custom-exceptions">###</a> 
+Create Custom Exceptions</h3>
+<ul>
+<li>Don't go too crazy. They're generally not a very good idea.
+<ul>
+<li>If you can use a common Java exception, do!</li>
+</ul>
+</li>
+<li>Useful if you want to add more information or have a specific Exception that is not present in the
+Java exceptions library.</li>
+</ul>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#93a1a1;">public </span><span style="color:#268bd2;">class </span><span style="color:#b58900;">MyException </span><span style="color:#859900;">extends </span><span style="color:#268bd2;">Exception </span><span style="color:#657b83;">{
+  </span><span style="color:#93a1a1;">public </span><span style="color:#b58900;">MyException</span><span style="color:#657b83;">(</span><span style="color:#859900;">String </span><span style="color:#268bd2;">message</span><span style="color:#657b83;">) {
+    </span><span style="color:#d33682;">super</span><span style="color:#657b83;">(</span><span style="color:#839496;">message</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+  </span><span style="color:#657b83;">}
+  </span><span style="color:#93a1a1;">public </span><span style="color:#b58900;">MyException</span><span style="color:#657b83;">() {
+    </span><span style="color:#d33682;">super</span><span style="color:#657b83;">(</span><span style="color:#839496;">&quot;</span><span style="color:#2aa198;">Exception message</span><span style="color:#839496;">&quot;</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+  </span><span style="color:#657b83;">}
+}
+</span></code></pre><h2 id="errors"><a href="#errors" aria-label="anchor link for errors">##</a> 
+Errors</h2>
+<ul>
+<li>You rarely need to create errors.</li>
+<li>Errors are fatal issues that are rarely encountered and should (almost) <em>never</em> be caught.
+<ul>
+<li>Java Examples: <code>OutOfMemoryError</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="java-libraries"><a href="#java-libraries" aria-label="anchor link for java-libraries">#</a> 
+(Java) Libraries</h1>
+<ul>
+<li>Libraries: A reusable collection of classes and pieces of software. <em>Promotes
+code reuse, standard ways of doing things, efficient code, and focusing on
+what is really important for your project.</em>
+<ul>
+<li>Examples: Java, Java Collections, JUnit, Apache</li>
+<li>&quot;It's a solved problem.&quot;</li>
+</ul>
+</li>
+<li>API: A list of instructions of how to interact with the software.
+<ul>
+<li>For this class, they are simple a series of webpages, created from Javadoc,
+that describe how to use our afternoon.</li>
+</ul>
+</li>
+<li>Installation of Libraries:
+<ul>
+<li>Add the JAR (Java ARchive) to your classpath.</li>
+</ul>
+</li>
+<li>Classpath: A set of locations that your Java Compiler and JVM will look at for code.
+<ul>
+<li>By default, your system <code>PATH</code> variable. However, you can update it with command line flags.</li>
+<li>Eclipse does this automatically with your <code>.project</code> and <code>.classpath</code> files. This allows you to
+structure your projects like Eclipse expects and compile them easily within Eclipse.</li>
+<li>In Eclipse, you add libraries to the build path on a per-project or a global scale.</li>
+</ul>
+</li>
+</ul>
+<h2 id="library-and-build-managers"><a href="#library-and-build-managers" aria-label="anchor link for library-and-build-managers">##</a> 
+Library and Build Managers</h2>
+<ul>
+<li>Maven: Helps manage projects and libraries. Helps build.</li>
+<li>Gradle: Like maven but different.</li>
+<li>Ant: Helps manage projects and libraries.</li>
+</ul>
+<h2 id="java-iterators"><a href="#java-iterators" aria-label="anchor link for java-iterators">##</a> 
+Java Iterators</h2>
+<p>Java collections can be iterated using a for-each loop.</p>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#859900;">for </span><span style="color:#657b83;">(</span><span style="color:#859900;">Type</span><span style="color:#839496;"> item </span><span style="color:#859900;">:</span><span style="color:#839496;"> container</span><span style="color:#657b83;">) {
+  </span><span style="color:#586e75;">// Do things
+</span><span style="color:#657b83;">}
+</span></code></pre>
+<p>This allows for more effiecient code, as you don't always have to pass through things multiple
+times. Instead, you can use an iterator which keeps track of its position and its value.</p>
+<p>To make a class use iterators, you should implement <code>Iterable&lt;E&gt;</code>.</p>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#93a1a1;">public </span><span style="color:#268bd2;">class </span><span style="color:#b58900;">List</span><span style="color:#839496;">&lt;</span><span style="color:#268bd2;">E</span><span style="color:#839496;">&gt; </span><span style="color:#859900;">implements </span><span style="color:#268bd2;">Iterable</span><span style="color:#839496;">&lt;</span><span style="color:#859900;">E</span><span style="color:#839496;">&gt; </span><span style="color:#657b83;">{
+  </span><span style="color:#586e75;">// Stuff
+  </span><span style="color:#93a1a1;">public </span><span style="color:#859900;">Iterator </span><span style="color:#b58900;">iterator</span><span style="color:#657b83;">() {
+    </span><span style="color:#586e75;">// Make iterator and stuff
+  </span><span style="color:#657b83;">}
+  </span><span style="color:#93a1a1;">public </span><span style="color:#268bd2;">class </span><span style="color:#b58900;">Iterator</span><span style="color:#839496;">&lt;</span><span style="color:#268bd2;">E</span><span style="color:#839496;">&gt; </span><span style="color:#657b83;">{
+    </span><span style="color:#586e75;">// Do stuff
+  </span><span style="color:#657b83;">}
+}
+</span></code></pre><h3 id="api"><a href="#api" aria-label="anchor link for api">###</a> 
+API</h3>
+<ul>
+<li><code>hastNext() : boolean</code>: Returns true if the Iterator can return another element.</li>
+<li><code>next() : E</code>: Returns the value of the next element. (This is also the thing
+the Iterator is currently on.)</li>
+<li><code>remove()</code>: Removes the current element under the Iterator.</li>
+</ul>
+<h2 id="limitations"><a href="#limitations" aria-label="anchor link for limitations">##</a> 
+Limitations</h2>
+<ul>
+<li>Iterator is unidirectional.</li>
+<li>Adding things while Iterating causes issues. (<code>ConcurrentModificationException</code>)</li>
+</ul>
+<h2 id="misc"><a href="#misc" aria-label="anchor link for misc">##</a> 
+Misc</h2>
+<ul>
+<li>Iterators keep track of their spots even if you remove stuff. <em>If properly implemented.</em></li>
+</ul>
+<h2 id="java-guis"><a href="#java-guis" aria-label="anchor link for java-guis">##</a> 
+Java GUIs</h2>
+<ul>
+<li>Java GUI Libraries:
+<ul>
+<li><code>java.awt.*</code>: Abstract Windowing Toolkit. The OG.</li>
+<li><code>javax.swing.*</code>: Java Extension Swing</li>
+<li>Inherits from <code>awt</code>.</li>
+</ul>
+</li>
+<li>Components:
+<ul>
+<li>Frame: Top-level window with title and border.</li>
+<li>Container: A thing that contains components.</li>
+<li>Panel: A thing that can hold other components or panels.</li>
+<li>Components: A thing that does a thing (e.g. buttons, text boxes).</li>
+<li>Top-level containers: <code>JFrame</code>, <code>JDialog</code>, <code>JApplet</code></li>
+<li>General-purpose containers: <code>JPanel</code>, <code>JScrollPane</code></li>
+<li>Special-purpose containers: <code>JRootPane</code>, <code>JLayeredPane</code></li>
+</ul>
+</li>
+<li>Layouts:
+<ul>
+<li><code>BorderLayout</code>: The UI is divided into north, sound, east, west, and
+center.</li>
+<li><code>FlowLayout</code>: Components go from left to right and wrap when they run out
+of room.</li>
+<li><code>BoxLayout</code>: Components in row or column.</li>
+<li><code>CardLayout</code>: Components in a stack where only the top is shown.</li>
+<li><code>GridLayout</code>: Things are in a rectangular grid.</li>
+<li><code>GridBagLayout</code>: Things are in a rectangular grid and can span multiple
+grids.</li>
+</ul>
+</li>
+</ul>
+<p>GUIs are <strong>event-driven</strong>. That is, we wait for the user to interact with the
+GUI and they can do whatever they want. We can, however, restrict their access.</p>
+<p>This means, even close buttons, don't truly close the program.</p>
+<p>To create a GUI, try storyboarding and consider what your user needs to do.
+Draw a picture of your planned GUI and adjust it as you think about what a user
+must do with it. Try sectioning things off into logical blocks or creating a
+tree of components.</p>
+<p>Generally, thinking about things as columns and rows is very helpful.</p>
+<p>Java uses the <strong>event model</strong> to handle events in GUIs. This uses <strong>event
+objects</strong> that encapsulate the information required to handle the event; this
+includes the information entered, the type of action, and the source of the
+event (e.g. a button).</p>
+<p>An event model uses <strong>events</strong>, <strong>handlers</strong>, and <strong>listeners</strong>. Events are
+things that the user has done or things that have occurred. Handlers are things
+that notify listeners when events have occurred. Listeners are things that take
+action given certain events. In Java, the event is an <code>EventObject</code> and a
+listener is an <code>EventHandler</code>. Because of this structure, we must register listeners to the handler.</p>
+<p>To create listeners, you create an object that implements <code>ActionListener</code>.
+There are many ways to do this:</p>
+<ul>
+<li>You could make your GUI implement <code>ActionListener</code> and then create a broad
+<code>eventPerformed(ActionEvent)</code> method that handles all events performed, using
+if statements.
+<ul>
+<li>Pros: Separates controller and view code.</li>
+<li>Cons: God it's so fucking gross.</li>
+</ul>
+</li>
+<li>Create named <code>ActionListener</code> classes.
+<ul>
+<li>Pros: You can reuse code so much.</li>
+<li>Cons: You have to write a ton of boilerplate and go across multiple classes.</li>
+</ul>
+</li>
+<li>Create anonymous <code>ActionListener</code>s with their specific code.
+<ul>
+<li>Pros: You don't get gross spaghetti code with tons of if statements.</li>
+<li>Cons: It mixes controller and view code. It is harder to reuse things.</li>
+</ul>
+</li>
+<li>Create lambda expressions for handling events.
+<ul>
+<li>Pros: You don't have to write as much boilerplate as the anonymous class.
+You can also reuse some code.</li>
+<li>Cons: It doesn't separate the controller and view code as much.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Low level events</strong> are interactions with the operating system, like key
+pressed. <strong>Semantic events</strong> are user-actions, like button clicks and text
+edits.</p>
+<p>To handle low level events, it is recommended to use Java's <code>*Adapter</code> abstract
+classes. These make it easier to handle low level events and &quot;convert&quot; them to
+action events.</p>
+<ul>
+<li><code>JButton</code>:
+<ul>
+<li><code>.processEvent()</code>: Takes in <code>ActionEvent</code> and takes action.</li>
+</ul>
+</li>
+</ul>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#93a1a1;">public </span><span style="color:#268bd2;">class </span><span style="color:#b58900;">CSC216GUI </span><span style="color:#859900;">extends </span><span style="color:#268bd2;">JFrame
+</span><span style="color:#859900;">implements </span><span style="color:#268bd2;">ActionListener </span><span style="color:#657b83;">{
+
+  </span><span style="color:#93a1a1;">public </span><span style="color:#b58900;">CSC216GUI</span><span style="color:#657b83;">() {
+    </span><span style="color:#586e75;">// Setup
+    </span><span style="color:#b58900;">setTitle</span><span style="color:#657b83;">(</span><span style="color:#839496;">&quot;</span><span style="color:#2aa198;">CSC 216 GUI</span><span style="color:#839496;">&quot;</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+    </span><span style="color:#b58900;">setSize</span><span style="color:#657b83;">(</span><span style="color:#6c71c4;">400</span><span style="color:#839496;">, </span><span style="color:#6c71c4;">400</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+    </span><span style="color:#b58900;">setLocation</span><span style="color:#657b83;">(</span><span style="color:#6c71c4;">600</span><span style="color:#839496;">, </span><span style="color:#6c71c4;">200</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+
+    </span><span style="color:#586e75;">// Create main container
+    </span><span style="color:#859900;">Container</span><span style="color:#839496;"> c </span><span style="color:#657b83;">= </span><span style="color:#b58900;">getContentPane</span><span style="color:#657b83;">(
+      </span><span style="color:#859900;">new BorderLayout</span><span style="color:#657b83;">()
+    )</span><span style="color:#839496;">;
+
+    </span><span style="color:#586e75;">// Components
+    </span><span style="color:#859900;">JLabel</span><span style="color:#839496;"> lblCheer </span><span style="color:#657b83;">= </span><span style="color:#859900;">new JLabel</span><span style="color:#657b83;">(</span><span style="color:#839496;">&quot;</span><span style="color:#2aa198;">Wolf!</span><span style="color:#839496;">&quot;</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+    c.</span><span style="color:#b58900;">add</span><span style="color:#657b83;">(</span><span style="color:#839496;">lblCheer, </span><span style="color:#859900;">BorderLayout</span><span style="color:#839496;">.</span><span style="color:#cb4b16;">NORTH</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+
+    </span><span style="color:#859900;">JButton</span><span style="color:#839496;"> btnClick </span><span style="color:#657b83;">= </span><span style="color:#859900;">new JButton</span><span style="color:#657b83;">(</span><span style="color:#839496;">&quot;</span><span style="color:#2aa198;">Click me!</span><span style="color:#839496;">&quot;</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+    </span><span style="color:#586e75;">// Anonymous class
+</span><span style="color:#839496;">    btnClick.</span><span style="color:#b58900;">addActionListener</span><span style="color:#657b83;">(
+      </span><span style="color:#859900;">new ActionListener</span><span style="color:#657b83;">() {
+        </span><span style="color:#268bd2;">void </span><span style="color:#b58900;">eventPerformed</span><span style="color:#657b83;">(</span><span style="color:#859900;">ActionEvent </span><span style="color:#268bd2;">e</span><span style="color:#657b83;">) {
+          </span><span style="color:#859900;">System</span><span style="color:#839496;">.out.</span><span style="color:#b58900;">println</span><span style="color:#657b83;">(</span><span style="color:#839496;">&quot;</span><span style="color:#2aa198;">Anonymous class</span><span style="color:#839496;">&quot;</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+        </span><span style="color:#657b83;">}
+      }
+    )</span><span style="color:#839496;">;
+    </span><span style="color:#586e75;">// Lamda expression
+</span><span style="color:#839496;">    btnClick.</span><span style="color:#b58900;">addActionListener</span><span style="color:#657b83;">(</span><span style="color:#268bd2;">e -&gt; </span><span style="color:#657b83;">{
+      </span><span style="color:#859900;">System</span><span style="color:#839496;">.out.</span><span style="color:#b58900;">println</span><span style="color:#657b83;">(</span><span style="color:#839496;">&quot;</span><span style="color:#2aa198;">Lambda expression</span><span style="color:#839496;">&quot;</span><span style="color:#657b83;">)
+    })</span><span style="color:#839496;">;
+    </span><span style="color:#586e75;">// GUI is listener
+</span><span style="color:#839496;">    btnClick.</span><span style="color:#b58900;">addActionListener</span><span style="color:#657b83;">(</span><span style="color:#d33682;">this</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+    c.</span><span style="color:#b58900;">add</span><span style="color:#657b83;">(</span><span style="color:#839496;">btnClick, </span><span style="color:#859900;">BorderLayout</span><span style="color:#839496;">.</span><span style="color:#cb4b16;">SOUTH</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+
+    </span><span style="color:#586e75;">// so it actually closes
+    </span><span style="color:#b58900;">setDefaultCloseOperation</span><span style="color:#657b83;">(</span><span style="color:#cb4b16;">EXIT_ON_CLOSE</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+    </span><span style="color:#586e75;">// default is invisible :)
+    </span><span style="color:#b58900;">setVisible</span><span style="color:#657b83;">(</span><span style="color:#b58900;">true</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+  </span><span style="color:#657b83;">}
+
+  </span><span style="color:#93a1a1;">public </span><span style="color:#268bd2;">void </span><span style="color:#b58900;">eventPerformed</span><span style="color:#657b83;">(</span><span style="color:#859900;">ActionEvent </span><span style="color:#268bd2;">e</span><span style="color:#657b83;">) {
+    </span><span style="color:#859900;">System</span><span style="color:#839496;">.out.</span><span style="color:#b58900;">println</span><span style="color:#657b83;">(</span><span style="color:#839496;">&quot;</span><span style="color:#2aa198;">GUI is listener</span><span style="color:#839496;">&quot;</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+  </span><span style="color:#657b83;">}
+
+  </span><span style="color:#93a1a1;">public static </span><span style="color:#268bd2;">void </span><span style="color:#b58900;">main</span><span style="color:#657b83;">(</span><span style="color:#859900;">String</span><span style="color:#93a1a1;">[] </span><span style="color:#268bd2;">args</span><span style="color:#657b83;">) {
+    </span><span style="color:#cb4b16;">CSC216</span><span style="color:#839496;"> gui </span><span style="color:#657b83;">= </span><span style="color:#859900;">new CSC216GUI</span><span style="color:#657b83;">()</span><span style="color:#839496;">;
+  </span><span style="color:#657b83;">}
+
+}
+</span></code></pre><h2 id="listiterator"><a href="#listiterator" aria-label="anchor link for listiterator">##</a> 
+ListIterator</h2>
+<p>A List specifically for lists. All linked lists are <em>doubly linked lists.</em> To
+support inserting in doubly linked lists, you need to make the first and last
+node actual nodes and not names for the boundary nodes (like what I said when I
+created <code>Walker</code>). ListIterator's think about being <em>between</em> two nodes.</p>
+<ul>
+<li>Differences:
+<ul>
+<li>Can move forward and backward through the list (doubly linked).</li>
+<li>Sits between two elements.</li>
+<li>Can handle concurrent adding.</li>
+</ul>
+</li>
+</ul>
+<h3 id="listiterator-api"><a href="#listiterator-api" aria-label="anchor link for listiterator-api">###</a> 
+ListIterator API</h3>
+<ul>
+<li><code>hasNext() : boolean</code>: Returns true if the ListIterator can return the next element.</li>
+<li><code>next() : E</code>: Returns the next element.</li>
+<li><code>nextIndex() : boolean</code>: Returns the index of the next element.</li>
+<li><code>hasPrevious() : boolean</code>: Returns true if the ListIterator can return the previous element.</li>
+<li><code>previous() : E</code>: Returns the previous element.</li>
+<li><code>previousIndex() : boolean</code>: Returns the index of the previous element.</li>
+<li><code>add(E)</code>: Inserts the specific element between the two elements the <code>ListIterator</code> is currently
+at.</li>
+<li><code>remove()</code>: Removes the element last returned by <code>next()</code> or <code>previous()</code>.</li>
+<li><code>set(E)</code>: Replaces the last element returned by <code>next()</code> or <code>previous()</code> using the given data.</li>
+</ul>
+<h3 id="abstractsequentiallist"><a href="#abstractsequentiallist" aria-label="anchor link for abstractsequentiallist">###</a> 
+AbstractSequentialList</h3>
+<p><code>AbstractSequentialList</code> is an abstract class is useful for creating lists.
+This implements almost everything except for <code>listIterator()</code> and <code>size()</code>
+because everything is done through <code>ListIterator</code>.</p>
+<h1 id="design-patterns"><a href="#design-patterns" aria-label="anchor link for design-patterns">#</a> 
+Design Patterns</h1>
+<ul>
+<li>Design Pattern: A standard way to solve a specific problem
+<ul>
+<li>&quot;It's a solved problem!&quot;</li>
+<li>Why? Because they help communication</li>
+</ul>
+</li>
+<li>Design patterns <em>emerge</em>.</li>
+<li>Common Ones: Written by &quot;The Gang of Four&quot; and there are 23 written in a big book.</li>
+</ul>
+<h2 id="families"><a href="#families" aria-label="anchor link for families">##</a> 
+Families</h2>
+<ul>
+<li>Creational: Process of object creation.</li>
+<li>Structural: Composition of classes or objects.</li>
+<li>Behavioral: Ways in which classes interact and distribute responsibility.</li>
+<li>Concurrency: How to make code that is thread-safe and can run at the same
+time without breaking.</li>
+</ul>
+<h2 id="model-view-controller-mvc"><a href="#model-view-controller-mvc" aria-label="anchor link for model-view-controller-mvc">##</a> 
+Model-View-Controller (MVC)</h2>
+<ul>
+<li><em>What does it do?</em> Separates the presentation of info from the working with
+the info.</li>
+<li><em>Why?</em>
+<ul>
+<li>You can hotplug the view and/or controller really easily!</li>
+<li>You can debug issues more easily because you know what is failing.</li>
+</ul>
+</li>
+<li>Model: Contains data and the logic for maintaining that data.</li>
+<li>View: Displays things to the user.</li>
+<li>Controller: Handles and translates the data of the model for the view or</li>
+<li>others.</li>
+<li>Examples:
+<ul>
+<li>Java Swing Apps:</li>
+<li>View and controller in the same class (very tightly coupled). (GUI class)</li>
+<li>Web Apps:</li>
+<li>View: HTML/XHTML + CSS.</li>
+<li>Controller: GET and POST.</li>
+<li>Model: Whatever backend underlies the project.</li>
+</ul>
+</li>
+</ul>
+<h2 id="observer"><a href="#observer" aria-label="anchor link for observer">##</a> 
+Observer</h2>
+<p>You have a single object that you want to be able to notify any number of other
+objects about when it changes.</p>
+<p>To do this, you make the single object you want to have other things observe
+extend <code>Observable</code>, which means it knows how to handle adding observers and
+notifiers. Then you have your observers extend <code>Observer</code>, which means they
+know how to handle being notified by an observable object.</p>
+<p><em>Why would you do this?</em> It allows you to decouple the thing your objects want
+to watch, meaning that it doesn't have to know about its listeners. This allows
+you to make easier to refactor to the higher level observers without breaking
+the observable.</p>
+<p>This is commonly done in GUIs.</p>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#586e75;">// In the Observable when something changes
+</span><span style="color:#d33682;">this</span><span style="color:#839496;">.</span><span style="color:#b58900;">setChanged</span><span style="color:#657b83;">()</span><span style="color:#839496;">;
+</span><span style="color:#b58900;">notify</span><span style="color:#657b83;">()</span><span style="color:#839496;">;
+</span></code></pre><h2 id="singleton"><a href="#singleton" aria-label="anchor link for singleton">##</a> 
+Singleton</h2>
+<p>A class controls the number of instances and the manner of creation of its
+instances.</p>
+<p>Here, we will only ever use a singleton that manages <em>one</em> instance of itself.</p>
+<p><em>Why do this?</em> So outsiders only look at a single instance or controlled
+instance by the class.</p>
+<h2 id="state-pattern"><a href="#state-pattern" aria-label="anchor link for state-pattern">##</a> 
+State Pattern</h2>
+<p>A way to implement <a href="https://elihunter173.com/notes/1s/csc216/#finite-state-machines">FSMs</a> with objects.</p>
+<p>Essentially, you have a state object representing each state. The machine
+parses the input and calls the appropriate method on the current state object.
+That state object then acts and changes the parent state object as necessary.</p>
+<h1 id="design-suggestions"><a href="#design-suggestions" aria-label="anchor link for design-suggestions">#</a> 
+Design Suggestions</h1>
+<ul>
+<li>Don't implement functionality you don't know the clear use of.</li>
+<li>Don't implement any functionality if its not in the requirements.
+<ul>
+<li><em>You should update the requirements, not implement what isn't there!</em></li>
+</ul>
+</li>
+<li>Limit class mutability as much as possible.
+<ul>
+<li>Omit mutators that have no use.</li>
+<li>Limit object creation to the constructor.</li>
+</ul>
+</li>
+<li>Classes should be as cohesive as possible. <em>They are a single level of abstraction</em>
+<ul>
+<li>Should this class/object really know this?</li>
+</ul>
+</li>
+<li>Limit coupling. Make classes orthogonal</li>
+<li>Design documents are <em>persuasive</em> papers.</li>
+<li>Don't create a bunch of objects. It's inefficient.</li>
+<li>Changing things is <em>dangerous</em>. Adding things is less.</li>
+<li>Duplicating works is dumb.
+<ul>
+<li>One reason OO is useful.</li>
+</ul>
+</li>
+</ul>
+<h1 id="software-engineering-design"><a href="#software-engineering-design" aria-label="anchor link for software-engineering-design">#</a> 
+Software Engineering &amp; Design</h1>
+<h2 id="methods-of-showing-design"><a href="#methods-of-showing-design" aria-label="anchor link for methods-of-showing-design">##</a> 
+Methods of Showing Design</h2>
+<ul>
+<li>
+<p>UML (Unified Modeling Language) Diagram: Shows the interaction between different classes and
+objects.</p>
+</li>
+<li>
+<p>CRC (Class, Responsibilities, Collaborators): Shows, on a per class basis, what each Object does
+and is responsible for.</p>
+<ul>
+<li>Responsibilities: Behaviors</li>
+<li>Collaborators: State, interacting classes</li>
+</ul>
+</li>
+<li>
+<p>Software Design Models: A generalized approach to creating some piece of software.</p>
+<ul>
+<li>Waterfall</li>
+<li>Spiral</li>
+<li>Iterative (Agile!)</li>
+</ul>
+</li>
+<li>
+<p>Software Process Development Phases</p>
+<ol>
+<li>Requirements/Analysis</li>
+<li>Design</li>
+<li>Implementation/Code</li>
+<li>Testing</li>
+<li>Integration</li>
+<li>Maintenance</li>
+</ol>
+</li>
+<li>
+<p>Software Artifacts: Any bit of documentation that is associated to the software.</p>
+</li>
+<li>
+<p>Best Practices:</p>
+<ul>
+<li>Design Practices</li>
+<li>IDEs</li>
+<li>Programming languages</li>
+<li>Reviews and Inspections</li>
+<li>Static Analysis</li>
+<li>Testing Practices (diabolic testing)</li>
+<li>Code Coverage</li>
+<li>Version Control</li>
+<li>Continuous Integration</li>
+<li><em>Why use best practices?</em></li>
+<li>Improve programmer productivity.</li>
+<li>Reduce software faults and failures.</li>
+<li>Support collaboration.</li>
+</ul>
+</li>
+</ul>
+<h2 id="software-process"><a href="#software-process" aria-label="anchor link for software-process">##</a> 
+Software Process</h2>
+<ul>
+<li>Goal of Design: Decide the software's structure and the hardware's configuration.
+<ul>
+<li>How will individual classes and software components work together?</li>
+</ul>
+</li>
+<li>Small Programs: ~10s classes/interfaces</li>
+<li>Medium Programs: ~1000s classes/interfaces</li>
+<li>General Design Flow:
+<ul>
+<li>What are the useful objects (candidate objects)?</li>
+<li>What are the useful things objects should do (candidate behaviors)?</li>
+<li>What are the useful things for each object to know (candidate state)?</li>
+</ul>
+</li>
+</ul>
+<h3 id="requirements-analysis"><a href="#requirements-analysis" aria-label="anchor link for requirements-analysis">###</a> 
+Requirements/Analysis</h3>
+<ul>
+<li>Goal: Understand customer requirements for the software system.</li>
+<li>Difficult to get <em>right</em> because customers don't know what they want or how to communicate it.</li>
+<li>Requirements often evolve.</li>
+<li>Software Artifacts: Requirements documents, use cases, user stories.
+<ul>
+<li>CSC-216 uses &quot;use cases&quot;.</li>
+<li>Requirements Documents: Very formal &quot;the system shall&quot;</li>
+<li>Use Cases: Grouped list of abilities of the system.</li>
+<li>User Stories: A specific story about what a user is doing.</li>
+</ul>
+</li>
+</ul>
+<h3 id="design"><a href="#design" aria-label="anchor link for design">###</a> 
+Design</h3>
+<ul>
+<li>Goal: Decide the structure of the software and the hardware configurations that support it.</li>
+<li><em>What am I designing for?</em></li>
+<li>Software Artifacts: Design documents, class diagrams, UML diagrams.</li>
+</ul>
+<h3 id="implementation-code"><a href="#implementation-code" aria-label="anchor link for implementation-code">###</a> 
+Implementation/Code</h3>
+<ul>
+<li>Goal: Translate requirements/design into concrete system.</li>
+<li>Decide the implementation language (should be driven by how you designed).</li>
+<li>Software Artifacts: Source code, bug database, config files, media, executables, source code repo</li>
+</ul>
+<h3 id="testing"><a href="#testing" aria-label="anchor link for testing">###</a> 
+Testing</h3>
+<ul>
+<li>Goal: Find errors in software.</li>
+<li><em>Do this as quickly as possible!</em></li>
+<li>Software Artifacts: Test code (test harnesses, scaffolding, etc.), bug database, test database,
+test inputs/outputs, documentation.</li>
+</ul>
+<h3 id="integration"><a href="#integration" aria-label="anchor link for integration">###</a> 
+Integration</h3>
+<ul>
+<li>Goal: Bring the software system together.</li>
+<li>Individual programmers work together to bring all their parts together.</li>
+<li>Software Artifacts: APIs, interfaces, integration documentation.</li>
+</ul>
+<h2 id="software-design-models"><a href="#software-design-models" aria-label="anchor link for software-design-models">##</a> 
+Software Design Models</h2>
+<h3 id="planned-waterfall"><a href="#planned-waterfall" aria-label="anchor link for planned-waterfall">###</a> 
+Planned/Waterfall</h3>
+<ul>
+<li>A planned, step by step method of development</li>
+</ul>
+<figure>
+  <img src="waterfall.png">
+  <figcaption><p>Waterfall Design Process</p>
+</figcaption>
+</figure>
+<h4 id="pros"><a href="#pros" aria-label="anchor link for pros">####</a> 
+Pros</h4>
+<ul>
+<li>Allows workforce specialization</li>
+<li>Great for known requirements.</li>
+</ul>
+<h4 id="cons"><a href="#cons" aria-label="anchor link for cons">####</a> 
+Cons</h4>
+<ul>
+<li>Very hard to fix early issues.</li>
+<li>Takes forever to deliver.</li>
+</ul>
+<h3 id="iterative-agile-model"><a href="#iterative-agile-model" aria-label="anchor link for iterative-agile-model">###</a> 
+Iterative/Agile Model</h3>
+<ul>
+<li>An iterative model that results in immediately useful products.</li>
+</ul>
+<h4 id="pros-1"><a href="#pros-1" aria-label="anchor link for pros-1">####</a> 
+Pros</h4>
+<ul>
+<li>Allows for more interaction between developers and consumers, reducing the likelihood of
+misunderstanding.</li>
+<li>Allows for more communication between developers reducing the risk of error, since they have to
+talk more between each iteration.</li>
+</ul>
+<h4 id="cons-1"><a href="#cons-1" aria-label="anchor link for cons-1">####</a> 
+Cons</h4>
+<ul>
+<li>Scope Creep: The expectation of the software increasing.</li>
+</ul>
+<h2 id="task-planning"><a href="#task-planning" aria-label="anchor link for task-planning">##</a> 
+Task Planning</h2>
+<ul>
+<li>Task Planning: Assigning tasks in a logical way that optimizes the work people accomplish.</li>
+<li>Tasks should be focused around deliverables.
+<ul>
+<li>Deliverables: Specific objects/things that must be turned in or delivered.</li>
+</ul>
+</li>
+<li>Tasks should have a time estimate attached to them
+<ul>
+<li>Ideal Time: The amount of time something should take ideally, no distractions, work 100% of
+time with 100% efficiency.</li>
+<li>Elapsed Time: The amount of time it actually takes to do something.</li>
+</ul>
+</li>
+<li>Story Points: A relative, unit-less measure of time to express the size/difficulty of a task.</li>
+</ul>
+<h3 id="pros-2"><a href="#pros-2" aria-label="anchor link for pros-2">###</a> 
+Pros</h3>
+<ul>
+<li>Defines project scope</li>
+<li>Illuminates project deliverables
+<ul>
+<li><em>What actually matters?</em></li>
+</ul>
+</li>
+<li>Accountability for teams
+<ul>
+<li>Reduce conflicts by identifying task owners</li>
+<li>Increase leaderships</li>
+</ul>
+</li>
+</ul>
+<h2 id="testing-1"><a href="#testing-1" aria-label="anchor link for testing-1">##</a> 
+Testing</h2>
+<ul>
+<li>Testing = Process to find faults. &quot;The <em>dynamic</em> verification of the behavior
+of a program on a finite set of test cases, <em>suitably selected</em> from the
+usually infinite executions domain, against the <em>expected behavior</em>.&quot;</li>
+<li><em>Write black box test cases first!</em> That way you aren't biased.</li>
+<li>Tips:
+<ul>
+<li>Really just try to mess things up.</li>
+<li>Think about equivalence classes.</li>
+<li>For white box tests, think about cyclomatic complexity.</li>
+</ul>
+</li>
+<li>Test code should be separate from source code.</li>
+<li>Test code should be javadoc'd as well as source code.</li>
+<li><strong>Iterate between tests and coding</strong></li>
+</ul>
+<h3 id="vocabulary-1"><a href="#vocabulary-1" aria-label="anchor link for vocabulary-1">###</a> 
+Vocabulary</h3>
+<ul>
+<li>Fault A bug. An incorrect process, step, or data definition.</li>
+<li>Verification: Evaluates whether the product is being built right.
+<ul>
+<li>White box testing. Code is known.</li>
+<li>Test individual paths, correctly loops at boundaries, internal data
+structures, logical decisions are complete (handle true and false).</li>
+</ul>
+</li>
+<li>Validation: Evaluates whether the right product is being built.
+<ul>
+<li>Black box testing. Code is unknown.</li>
+<li>Incorrect or missing functions, interface errors, errors in data
+structures, behavior or performance errors, initialization and
+termination errors.</li>
+</ul>
+</li>
+<li>Equivalence Classes: Chunks of input/output space that (should) all work
+identically. Pick a representative (middle!) value from these chunks.
+<ul>
+<li>This is part of the <em>suitably selected</em> part of testing.</li>
+</ul>
+</li>
+<li>Cyclomatic Complexity: The number of paths of execution that can be
+taken through a program (or at least an estimate of it).
+<ul>
+<li>Easy way to find: Number of decisions + 1 (not always correct!)</li>
+</ul>
+</li>
+</ul>
+<h3 id="types-of-testing"><a href="#types-of-testing" aria-label="anchor link for types-of-testing">###</a> 
+Types of Testing</h3>
+<ul>
+<li>Unit: Tests a single bit of software (normally a method). Should be
+automated.
+<ul>
+<li>JUnit</li>
+</ul>
+</li>
+<li>Integration: Tests a small group of software units together (or
+integrated!). Should be automated.
+<ul>
+<li>JUnit</li>
+</ul>
+</li>
+<li>Functional/System: Tests a full, complete, integrated system / piece of
+software. Should be external.</li>
+<li>Acceptance: Tests done by client to make sure that software works as
+expected.</li>
+<li>Regression: A selective retesting of all other types of testing. This
+should always be (more or less) the same and should always be passed. <em>DONE
+TO MAKE SURE THAT PROGRAM WORKS AS EXPECTED.</em> Should be automated.</li>
+<li>Beta: Tests done by a subset of consumers. They just use the software and
+see if they like it!</li>
+</ul>
+<h3 id="test-case-information"><a href="#test-case-information" aria-label="anchor link for test-case-information">###</a> 
+Test Case Information</h3>
+<ul>
+<li>Unique Identifier
+<ul>
+<li>Black Box: Name of test in document.</li>
+<li>White Box: Name of test method or specific assert.</li>
+</ul>
+</li>
+<li>Input into the program or program unit
+<ul>
+<li>Black Box: How the user runs and interacts with the program. <em>Should be
+extremely specific.</em></li>
+<li>White Box: Inputs to a method that set up the test.</li>
+</ul>
+</li>
+<li>Expected Results from the program or program unit
+<ul>
+<li>What you expect to get back, based off the requirements. <em>Should be
+extremely specific.</em></li>
+</ul>
+</li>
+<li>Actual Results from the program or program unit
+<ul>
+<li>Black Box: What the user is shown.</li>
+<li>White Box: Return values or state from other methods or objects.</li>
+</ul>
+</li>
+</ul>
+<h3 id="code-coverage"><a href="#code-coverage" aria-label="anchor link for code-coverage">###</a> 
+Code Coverage</h3>
+<ul>
+<li>Code Coverage: A measure of test case completeness.
+<ul>
+<li>Method Coverage: How many methods have been tested?</li>
+<li>Statement Coverage: How many statements in each method have been tested?</li>
+<li>Decision/Branch Coverage: How many decisions have been evaluated on
+their true and false path?</li>
+<li>Condition Coverage: How many individual conditionals have been executed
+for both their true and false path? (EclEmma's Branch coverage)</li>
+</ul>
+</li>
+<li>If you have 100% statement coverage, you have 100% condition coverage</li>
+<li>Coverage is not perfect and doesn't say that your test cases are strong.</li>
+<li><em><strong>80-90% line/statement coverage is expected for each non-UI class.</strong></em>
+<ul>
+<li>Never stop testing.</li>
+<li>Double check on Jenkins.</li>
+</ul>
+</li>
+<li>You can test coverage on non-whitebox tests too! :)</li>
+</ul>
+<h2 id="debugging"><a href="#debugging" aria-label="anchor link for debugging">##</a> 
+Debugging</h2>
+<ul>
+<li>Eclipse can debug code!</li>
+<li>Debugging lets you see code as it is running.
+<ul>
+<li>What line its executing.</li>
+<li>The stacktrack.</li>
+<li>The current data.</li>
+</ul>
+</li>
+<li>Breakpoints: Things you can insert from the gutter to stop/pause code
+execution when it reaches that line.
+<ul>
+<li>Allows you to walk through your code step by step.</li>
+</ul>
+</li>
+<li>Steps: How your program executes.
+<ul>
+<li>Step Over: Executes the next method as if it was a black box.</li>
+<li>Step In: Executes a method by going into it.</li>
+<li>Step Return: Goes to the return statement and finishes it.</li>
+</ul>
+</li>
+</ul>
+<h2 id="analysis-types"><a href="#analysis-types" aria-label="anchor link for analysis-types">##</a> 
+Analysis Types</h2>
+<ul>
+<li>Static Analysis: Evaluating the code without executing it.</li>
+<li>Dynamic Analysis: Evaluating the code by executing it.</li>
+<li>Looks for obvious problems or misuses of APIs, ignoring invariants, etc.</li>
+<li>Issues:
+<ul>
+<li>False Positive: Reports bugs that program doesn't contain.</li>
+<li>False Negative: Contains bugs that analyzer does not report.</li>
+</ul>
+</li>
+<li>Our Tools:
+<ul>
+<li>FindBugs: Finds subtle bugs.</li>
+<li>CheckStyle: Make sure that code is properly constructed in correct style.</li>
+<li>PMD: Finds more style issues and content issues.</li>
+</ul>
+</li>
+</ul>
+<h2 id="uml-unified-modelling-language"><a href="#uml-unified-modelling-language" aria-label="anchor link for uml-unified-modelling-language">##</a> 
+UML (Unified Modelling Language)</h2>
+<ul>
+<li>UML: Models OO software.
+<ul>
+<li>Converged from earlier standards (OMT, OOSE, Booch)</li>
+</ul>
+</li>
+<li>Use Case Diagrams: Models the interactions between use cases.
+<ul>
+<li>Ovals: Use case</li>
+<li>Stick Figure: User (can be library, person, etc)</li>
+</ul>
+</li>
+<li>Class Diagram: Shows the interaction between different classes and objects. <em>Static.</em></li>
+<li>Sequence Diagram: Shows the flow of the program through different methods and classes through a
+<em>specific</em> scenario. <em>Dynamic.</em></li>
+<li>State Chart Diagram: Shows how models change state when performing a task.</li>
+</ul>
+<h3 id="class-diagrams"><a href="#class-diagrams" aria-label="anchor link for class-diagrams">###</a> 
+Class Diagrams</h3>
+<h4 id="class-attributes"><a href="#class-attributes" aria-label="anchor link for class-attributes">####</a> 
+Class Attributes</h4>
+<ul>
+<li>Attributes: An instance variable (including static).</li>
+<li>Form: <code>visibility name : type</code></li>
+<li>Visibilities:
+<ul>
+<li><code>+</code> -- Public</li>
+<li><code>#</code> -- Protected</li>
+<li><code>-</code> -- Private</li>
+<li><code>~</code> -- Package (default)</li>
+<li><code>/</code> -- Derived</li>
+</ul>
+</li>
+<li>Static Attributes: Underlined</li>
+</ul>
+<h4 id="class-operations-methods"><a href="#class-operations-methods" aria-label="anchor link for class-operations-methods">####</a> 
+Class Operations/Methods</h4>
+<ul>
+<li>Operations: Actions that the class can perform.</li>
+<li>Form: <code>visibility name(parameters : types) : return_type</code>
+<ul>
+<li>If <code>return_type</code> is void, omit it.</li>
+</ul>
+</li>
+<li>Visibilities:
+<ul>
+<li><code>+</code> -- Public</li>
+<li><code>#</code> -- Protected</li>
+<li><code>-</code> -- Private</li>
+<li><code>~</code> -- Package (default)</li>
+</ul>
+</li>
+<li>Static Methods: Underlined.</li>
+</ul>
+<h4 id="connectors"><a href="#connectors" aria-label="anchor link for connectors">####</a> 
+Connectors</h4>
+<ul>
+<li>Connector: Any arrow that connects two classes</li>
+<li>Generalization (is-a): Shows inheritance.
+<ul>
+<li>Interface Connector: Dashed arrow with triangular head points from concrete class to interface.</li>
+<li>Abstract Class Connector: Solid arrow with triangular head points from concrete class to interface.</li>
+</ul>
+</li>
+<li>Composition (has-a): There are quite a few different ones!
+<ul>
+<li>Attributes: Small things (Strings, primitives), part of existing library, immutable value
+objects.</li>
+<li>Dependency: A Class needs another Class to work, but doesn't have any fields that are one.</li>
+<li><em>Shouldn't be included in CSC-216!</em></li>
+<li>Connector: A dashed line.</li>
+<li>Association: A Class knows about an instance of another Class, but they are somewhat
+independent.</li>
+<li>Connector: A solid arrow with <code>&gt;</code> head from the container (source) to the contained
+(target) with numbers (multiplicity) to show how many containers have how many contained.</li>
+<li>Aggregation: The container class essentially just controls a group of those Classes.
+Unidirectional.</li>
+<li>Connector: A line with a white diamond next to the aggregate class.</li>
+<li>Composition: The container class controls every part of the contained.
+Unidirectional.</li>
+<li>Connector: A line with a black diamond next to the container class.</li>
+</ul>
+</li>
+<li>Abstracts: Shows Classes that can't be directly instantiated. Italicized.
+<ul>
+<li>Implements: When a class implements an interfaces. Shown with dashed line with a white triangle
+head.</li>
+</ul>
+</li>
+<li>Interfaces: Shows interfaces. Depend on the particular instance.</li>
+</ul>
+<figure>
+  <img src="class_design.png">
+  <figcaption><p>Event Class</p>
+</figcaption>
+</figure>
+<figure>
+  <img src="full_class_diagram.png">
+  <figcaption><p>Wolf Scheduler Diagram</p>
+</figcaption>
+</figure>
+<h3 id="sequence-diagram"><a href="#sequence-diagram" aria-label="anchor link for sequence-diagram">###</a> 
+Sequence Diagram</h3>
+<ul>
+<li>Message: Any piece of information or control that is passed between two classes. Solid arrow
+pointing to where the message went.</li>
+<li>Return Message: The result of the sent message. Dashed arrow showing the message going back to
+where it was called from</li>
+</ul>
+<h3 id="tools-for-creating-uml-diagrams"><a href="#tools-for-creating-uml-diagrams" aria-label="anchor link for tools-for-creating-uml-diagrams">###</a> 
+Tools for Creating UML Diagrams</h3>
+<ul>
+<li>Microsoft Visio</li>
+<li>Commercial Eclipse Plugins</li>
+<li>Violet UML (open source)</li>
+<li>Dia (freeware)</li>
+</ul>
+<h1 id="algorithmic-efficiency"><a href="#algorithmic-efficiency" aria-label="anchor link for algorithmic-efficiency">#</a> 
+Algorithmic Efficiency</h1>
+<ul>
+<li>Big Idea: Generally, there is a trade off between runtime efficiency and size efficiency.</li>
+</ul>
+<h2 id="big-o"><a href="#big-o" aria-label="anchor link for big-o">##</a> 
+Big O</h2>
+<ul>
+<li>Big O Notation: A way of showing the trend of worst, case running time of an algorithm.</li>
+<li>You can specify specific cases and those will have different times, but then those are
+considered different algorithms.</li>
+<li>Specific, common growth rates are shown at the bottom in a table.</li>
+</ul>
+<table><thead><tr><th>Name</th><th>Big O Notation</th></tr></thead><tbody>
+<tr><td>Constant</td><td>$O(1)$</td></tr>
+<tr><td>Logarithmic</td><td>$O(log(N))$</td></tr>
+<tr><td>Linear</td><td>$O(N)$</td></tr>
+<tr><td>Log-Linear</td><td>$O(N * log(N))$</td></tr>
+<tr><td>Quadratic</td><td>$O(N^2)$</td></tr>
+<tr><td>Exponential</td><td>$O(2^N)$</td></tr>
+</tbody></table>
+<h1 id="data-structures"><a href="#data-structures" aria-label="anchor link for data-structures">#</a> 
+Data Structures</h1>
+<h2 id="stack"><a href="#stack" aria-label="anchor link for stack">##</a> 
+Stack</h2>
+<ul>
+<li>Stack: A collection of data that can only be accessed in a Last-In First-Out (LIFO) manner. That
+is, you can only access the newest element.</li>
+</ul>
+<h3 id="methods-of-interaction"><a href="#methods-of-interaction" aria-label="anchor link for methods-of-interaction">###</a> 
+Methods of Interaction</h3>
+<ul>
+<li><code>push</code>: Adds an element at the top of the stack.</li>
+<li><code>pop</code>: Removes and returns the element at the top of the stack.</li>
+<li><code>peek</code>: Returns the element at the top of the stack.</li>
+</ul>
+<h3 id="usage-1"><a href="#usage-1" aria-label="anchor link for usage-1">###</a> 
+Usage</h3>
+<ul>
+<li>Can't do for-each style coding because you can't access the inner elements.</li>
+<li>Instead do while not empty pop style.</li>
+</ul>
+<h3 id="uses"><a href="#uses" aria-label="anchor link for uses">###</a> 
+Uses</h3>
+<ul>
+<li>When using postfix ($1 2 +$) or prefix ($+ 1 2$) notation, these can be stack
+evaluated.
+<ul>
+<li>For prefix notation, you push tokens onto the stack and, once you reach a
+function that takes $N$ arguments, you push $N$ more times and then pop $N</li>
+</ul>
+<ul>
+<li>1$ times (to remove the arguments and the operator), evaluate the
+function, and then push the result onto the stack.</li>
+</ul>
+<ul>
+<li>For postfix notation, you push tokens onto the stack unless it is a
+function that takes $N$ arguments. Then you pop $N$ times, evaluate the
+arguments, and push the result onto the stack.</li>
+</ul>
+</li>
+</ul>
+<h2 id="queue"><a href="#queue" aria-label="anchor link for queue">##</a> 
+Queue</h2>
+<ul>
+<li>Queue: A colleciton of data that can only be accessed in a First-In First-Out (FIFO) manner. That
+is, you can only access the oldest element.</li>
+</ul>
+<h3 id="methods-of-interaction-1"><a href="#methods-of-interaction-1" aria-label="anchor link for methods-of-interaction-1">###</a> 
+Methods of Interaction</h3>
+<ul>
+<li><code>enqueue</code>: Adds an element at the back of the queue.</li>
+<li><code>dequeue</code>: Removes and returns the element at the front of the queue.</li>
+<li><code>peek</code>: Returns the element at the front of the queue.</li>
+</ul>
+<h2 id="trees"><a href="#trees" aria-label="anchor link for trees">##</a> 
+Trees</h2>
+<p>A tree is a <em>directed</em>, <em>acyclic</em> structure of linked nodes. These can be
+binary, heaped, and more.</p>
+<p>Trees are inherently recursive and thus it is strongly recommended that you
+program recursively with it, especially <em>traversal</em> which is where you visit
+every node in the tree.</p>
+<p>For traversals, you should probably draw a diagram to see what order and how
+you are traversing the tree.</p>
+<p>Some uses of trees are representing the file structure using a <em>filesystem
+tree</em>, representing/implementing AI machines using <em>decision trees</em>, and
+compiling code using an <em>abstract syntax tree / parse tree</em>.</p>
+<h3 id="vocabulary-2"><a href="#vocabulary-2" aria-label="anchor link for vocabulary-2">###</a> 
+Vocabulary</h3>
+<ul>
+<li><strong>Directed</strong> means links are one-way.</li>
+<li><strong>Acyclic</strong> means no path crosses a node twice.</li>
+<li><strong>Balanced</strong>: The property of a tree being at or near its minimum height.</li>
+<li>Tree Properties:
+<ul>
+<li><strong>Height</strong>: The number of nodes between the current node and the lowest leaf node.</li>
+<li>Really +1 the height of its child.</li>
+<li><strong>Depth</strong>: The number of nodes between the current node and the root node.</li>
+</ul>
+</li>
+<li>Types of Traversals:
+<ul>
+<li><strong>Pre-order</strong> is where you process the branch, the left, then the right.</li>
+<li>Start from the top and go down.</li>
+<li><strong>Post-order</strong> is where you process the left, the right, then branch.</li>
+<li>Go to the bottom and then go up.</li>
+<li><strong>In-order</strong> is where you process the left, the branch, then the right.</li>
+<li>If you draw the tree such that the distance between sibling nodes halves
+each level you go down, this is really easy.</li>
+</ul>
+</li>
+<li>Types of Nodes:
+<ul>
+<li><strong>Branch</strong> nodes have a parent and a child.</li>
+<li><strong>Leafs</strong> have no children.</li>
+<li>The <strong>root</strong> has no parent, and is the ancestor of all nodes. This can also
+be a branch or leaf.</li>
+</ul>
+</li>
+<li>Node Relations:
+<ul>
+<li>A <strong>parent</strong> is a node that points to the current node.</li>
+<li>A <strong>child</strong> is a node that the current node points to.</li>
+<li>A <strong>sibling</strong> is a node with a common parent of the child.</li>
+</ul>
+</li>
+</ul>
+<h2 id="binary-search-tree"><a href="#binary-search-tree" aria-label="anchor link for binary-search-tree">##</a> 
+Binary Search Tree</h2>
+<p>A <em>binary tree</em> is a tree where each branch only has two children.</p>
+<p>A <em>binary search tree</em> is a binary tree that cannot contain duplicates where
+each branch is strictly greater than the max value in its left child's tree
+(and thus is greater than its left child) and strictly less than the min value
+in its right child's tree (and thus less than its right child) and each of its
+children are binary search trees.</p>
+<p>A binary search tree has to take at most the height of the root node to find an
+element at a given element. This makes it important to try your best to keep
+the tree as close to its minimum height as possible (this means <em>balanced</em>).
+For balanced binary search trees, the efficiency is near $O(log_2(n))$. For
+unbalanced binary search trees, the efficiency is near $O(n)$.</p>
+<h3 id="adding-elements"><a href="#adding-elements" aria-label="anchor link for adding-elements">###</a> 
+Adding Elements</h3>
+<ol>
+<li>Start at the root as your branch.</li>
+<li>If the element is the same as the branch,</li>
+<li>Else if the branch is empty, insert the element there.</li>
+<li>Else if the element is less than the branch, add the element to the left side.</li>
+<li>Else if the element is greater than the branch, add the element to the right side.</li>
+</ol>
+<p>In Java, it is recommended to do adds by reassigning your node with a function.</p>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#93a1a1;">public</span><span style="color:#839496;"> void </span><span style="color:#b58900;">add</span><span style="color:#657b83;">(</span><span style="color:#859900;">E</span><span style="color:#839496;"> element</span><span style="color:#657b83;">) {
+  </span><span style="color:#d33682;">this</span><span style="color:#839496;">.root </span><span style="color:#657b83;">= </span><span style="color:#b58900;">add</span><span style="color:#657b83;">(</span><span style="color:#839496;">overallRoot, value</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+</span><span style="color:#657b83;">}
+</span><span style="color:#93a1a1;">private </span><span style="color:#859900;">Node </span><span style="color:#b58900;">add</span><span style="color:#657b83;">(</span><span style="color:#859900;">Node</span><span style="color:#839496;"> branch, </span><span style="color:#859900;">E</span><span style="color:#839496;"> element</span><span style="color:#657b83;">) {
+  </span><span style="color:#859900;">if </span><span style="color:#657b83;">(</span><span style="color:#839496;">branch </span><span style="color:#657b83;">== </span><span style="color:#b58900;">null</span><span style="color:#657b83;">) {
+</span><span style="color:#839496;">    branch </span><span style="color:#657b83;">= </span><span style="color:#859900;">new Node</span><span style="color:#657b83;">(</span><span style="color:#839496;">element</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+  </span><span style="color:#657b83;">} </span><span style="color:#859900;">else if </span><span style="color:#657b83;">(</span><span style="color:#859900;">E </span><span style="color:#839496;">&lt; </span><span style="color:#859900;">branch</span><span style="color:#839496;">.</span><span style="color:#859900;">data</span><span style="color:#657b83;">) {
+    </span><span style="color:#586e75;">// You&#39;d really do compareTo here but it&#39;s
+    // hard to read
+</span><span style="color:#839496;">    branch.left </span><span style="color:#657b83;">= </span><span style="color:#b58900;">add</span><span style="color:#657b83;">(</span><span style="color:#839496;">branch.left, element</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+  </span><span style="color:#657b83;">} </span><span style="color:#859900;">else </span><span style="color:#657b83;">{
+</span><span style="color:#839496;">    branch.right </span><span style="color:#657b83;">= </span><span style="color:#b58900;">add</span><span style="color:#657b83;">(</span><span style="color:#839496;">branch.right, element</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+  </span><span style="color:#657b83;">}
+}
+</span></code></pre><h3 id="getting-elements"><a href="#getting-elements" aria-label="anchor link for getting-elements">###</a> 
+Getting Elements</h3>
+<ul>
+<li><em>Getting Minimum</em>:
+<ol>
+<li>If you don't have a left, return yourself.</li>
+<li>If you do, go left.</li>
+</ol>
+</li>
+<li><em>Getting Maximum</em>:
+<ol>
+<li>If you don't have a right, return yourself.</li>
+<li>If you do, go right.</li>
+</ol>
+</li>
+</ul>
+<h3 id="removing-elements"><a href="#removing-elements" aria-label="anchor link for removing-elements">###</a> 
+Removing Elements</h3>
+<ol>
+<li>Find your appropriate node.</li>
+<li>If you have two children, set yourself to the min of the right tree (or max of the left tree).</li>
+<li>If you have one child, replace yourself with your child.</li>
+<li>If you have no children, kill yourself.</li>
+</ol>
+<h2 id="heaped-trees-heaps"><a href="#heaped-trees-heaps" aria-label="anchor link for heaped-trees-heaps">##</a> 
+Heaped Trees / Heaps</h2>
+<p>A <em>heaped tree</em> or <em>heap</em> is a tree which satisfies the heaping property, that
+is each node is either greater than or less than its children. If it has the
+prior, it is called a <em>max heap</em> because the root is the max element. If it has
+the latter, it is called a <em>min heap</em> because the root is the min element.</p>
+<h1 id="data-structure-modification"><a href="#data-structure-modification" aria-label="anchor link for data-structure-modification">#</a> 
+Data Structure Modification</h1>
+<h2 id="searching"><a href="#searching" aria-label="anchor link for searching">##</a> 
+Searching</h2>
+<p><em>How do you find things in data structures?</em> One way is by arranging things in
+some natural order.</p>
+<p>There are two categories, <strong>sorted</strong> and <strong>unsorted</strong>.</p>
+<ul>
+<li>Sorted: Slower insertion/up-front. Faster retrieval/end.</li>
+<li>Unsorted: Faster insertion/up-front. Slow retrieval/end.</li>
+</ul>
+<p>There are many methods, each have trade-offs:</p>
+<ul>
+<li>Sequential Search:
+<ul>
+<li>Definition: Start at element 0.
+If you are on the element you want, you found it.  Otherwise, go to next
+element.  At any time, if you are at the end, the list does not contain the
+element.</li>
+<li>Efficiency: $O(n)$</li>
+<li>Pros: Works for unsorted lists.</li>
+<li>Cons: It's fairly slow.</li>
+</ul>
+</li>
+<li>Binary Search:
+<ul>
+<li>Definition: Locate target by selecting middle element, this is your pivot
+point. If your element should go before the pivot point, look only at that
+half. Likewise for your element after the pivot point. Select middle
+element of that half as your new pivot point.  Recurse.</li>
+<li>Efficiency: $O(log_2(n))$</li>
+<li>Pros: Is fast.</li>
+<li>Cons: The list must be sorted.</li>
+</ul>
+</li>
+</ul>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#586e75;">// This is like java.util.Arrays#binarySearch
+</span><span style="color:#93a1a1;">private static </span><span style="color:#268bd2;">int
+</span><span style="color:#b58900;">binarySearch</span><span style="color:#657b83;">(</span><span style="color:#268bd2;">int</span><span style="color:#93a1a1;">[]</span><span style="color:#839496;"> list, </span><span style="color:#268bd2;">int</span><span style="color:#839496;"> value, </span><span style="color:#268bd2;">int</span><span style="color:#839496;"> min,
+             </span><span style="color:#268bd2;">int</span><span style="color:#839496;"> max</span><span style="color:#657b83;">) {
+  </span><span style="color:#859900;">if </span><span style="color:#657b83;">(</span><span style="color:#839496;">min </span><span style="color:#657b83;">&gt;</span><span style="color:#839496;"> max</span><span style="color:#657b83;">) {
+    </span><span style="color:#586e75;">// Missed element
+    </span><span style="color:#859900;">return </span><span style="color:#657b83;">-</span><span style="color:#6c71c4;">1</span><span style="color:#839496;">;
+    </span><span style="color:#586e75;">// java.util.Arrays#binarySearch(array,
+    // value) returns -(min + 1), or insertion
+    // point
+  </span><span style="color:#657b83;">} </span><span style="color:#859900;">else </span><span style="color:#657b83;">{
+    </span><span style="color:#586e75;">// List not empty
+    </span><span style="color:#268bd2;">int</span><span style="color:#839496;"> pivot </span><span style="color:#657b83;">= (</span><span style="color:#839496;">min </span><span style="color:#657b83;">+</span><span style="color:#839496;"> max</span><span style="color:#657b83;">) / </span><span style="color:#6c71c4;">2</span><span style="color:#839496;">;
+    </span><span style="color:#859900;">if </span><span style="color:#657b83;">(</span><span style="color:#839496;">value </span><span style="color:#657b83;">&lt;</span><span style="color:#839496;"> list[pivot]</span><span style="color:#657b83;">) {
+      </span><span style="color:#586e75;">//
+      </span><span style="color:#b58900;">binarySearch</span><span style="color:#657b83;">(</span><span style="color:#839496;">list, value, min, pivot </span><span style="color:#657b83;">- </span><span style="color:#6c71c4;">1</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+    </span><span style="color:#657b83;">} </span><span style="color:#859900;">else if </span><span style="color:#657b83;">(</span><span style="color:#839496;">value </span><span style="color:#657b83;">&gt;</span><span style="color:#839496;"> list[pivot]</span><span style="color:#657b83;">) {
+      </span><span style="color:#b58900;">binarySearch</span><span style="color:#657b83;">(</span><span style="color:#839496;">list, value, pivot </span><span style="color:#657b83;">+ </span><span style="color:#6c71c4;">1</span><span style="color:#839496;">, max</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+    </span><span style="color:#657b83;">} </span><span style="color:#859900;">else </span><span style="color:#657b83;">{
+      </span><span style="color:#859900;">return</span><span style="color:#839496;"> pivot;
+    </span><span style="color:#657b83;">}
+  }
+}
+</span></code></pre><h2 id="sorting"><a href="#sorting" aria-label="anchor link for sorting">##</a> 
+Sorting</h2>
+<p>Sorting is ordering items into their natural ordering. There are many different
+ways to do this, each with trade offs:</p>
+<ul>
+<li>Bogo Sort:
+<ul>
+<li>Method: Shuffle and check if its sorted. Repeat until sorted.</li>
+<li>Efficiency: $O(n!)$.</li>
+</ul>
+</li>
+<li>Selection Sort:
+<ul>
+<li>Method: There are two parts of the list: the sorted and the unsorted;
+everything starts unsorted. Find the smallest value in the unsorted part
+and place it at the end of the sorted part.</li>
+<li>Efficiency: $O(n^2)$.</li>
+</ul>
+</li>
+<li>Bubble Sort:
+<ul>
+<li>Method: Start on the first element. Compare the current element to the
+next, swapping them if they are not in the right order. Do this until you
+reach the end of the list. Do this until the list is completely sorted.</li>
+<li>Efficiency: $O(n^2)$ but slower than selection sort due to doing more swaps.</li>
+</ul>
+</li>
+<li>Insertion Sort:
+<ul>
+<li>Method: There are two parts of the list: the sorted and the unsorted;
+everything starts unsorted. Take the first element in the list and insert
+it into the sorted part in sorted order. Do this until there is no unsorted
+part.</li>
+<li>Efficiency: $O(n^2) but normally faster than selection sort because you do
+fewer comparisons.</li>
+</ul>
+</li>
+<li>Merge Sort:
+<ul>
+<li>Method: We already know how to merge two sorted lists (by having multiple
+read heads and taking the smallest value at any of the read heads). If our
+list is length 1, it is trivially sorted. If our list is unsorted, we split
+the list into a left and right half and merge sort those. Then we merge
+those two now sorted halves (each lists their own!). The list is now
+sorted.</li>
+<li>Efficiency: $O(n * log_2(n))$</li>
+</ul>
+</li>
+<li>Quick Sort:
+<ul>
+<li>Method: Pick a pivot element and split the list into two parts, either
+larger or smaller than the pivot. Sort those sub lists. The pivot goes
+right between these two sublists. The list is now sorted.</li>
+<li>Efficiency: $O(n * log_2(n))$ (can be worse with bad pivots).</li>
+<li>It really matters what pivot you pick. There are different ways to do it:</li>
+<li>Pick first. (good and easy if unsorted)</li>
+<li>Pick randomly. (good on average)</li>
+<li>Pick median of first, middle, and last. (great for sorted and reverse sorted elements)</li>
+</ul>
+</li>
+</ul>
+<h1 id="finite-state-machines"><a href="#finite-state-machines" aria-label="anchor link for finite-state-machines">#</a> 
+Finite State Machines</h1>
+<ul>
+<li>Finite State Machine: A system that can have only a fixed set of inputs, states, and transitions.
+<ul>
+<li>The state is held in memory.</li>
+</ul>
+</li>
+<li><em>Why use FSMs?</em>: They can describe almost all systems easily. They are very easy to implement.
+They're also just interesting!</li>
+<li>Guard: Something which must be true for a transition to occur.</li>
+</ul>
+<h2 id="diagrams"><a href="#diagrams" aria-label="anchor link for diagrams">##</a> 
+Diagrams</h2>
+<ul>
+<li>FSM Diagram:
+<ul>
+<li>State: A circle.</li>
+<li>Final State: A double-layered circle.</li>
+<li>Inputs: A letter or other identifier.</li>
+<li>Transition: Arrows labeled with the input given.</li>
+</ul>
+</li>
+<li>Transition Tables: A tabular method of showing the possible states.
+<ul>
+<li>Inputs: Heading.</li>
+<li>State: First Column.</li>
+<li>Transition: Intersection between state's row and heading column.</li>
+</ul>
+</li>
+</ul>
+<h2 id="examples"><a href="#examples" aria-label="anchor link for examples">##</a> 
+Examples</h2>
+<ul>
+<li>A vending machine modeled by a finite state machine:</li>
+</ul>
+<figure>
+  <img src="vending_machine_fsm.png">
+  <figcaption><p>Vending Machine Diagram</p>
+</figcaption>
+</figure>
+<ul>
+<li>Compilation of code:</li>
+</ul>
+<figure>
+  <img src="pascal_compiler_fsm.png">
+  <figcaption><p>Pascal Real Constant Compiler</p>
+</figcaption>
+</figure>
+<ul>
+<li>Substring Finding:</li>
+</ul>
+<figure>
+  <img src="abba_fsm.png">
+  <figcaption><p>Simple Text Processing for 'abba'</p>
+</figcaption>
+</figure>
+<ul>
+<li>Text Processing:</li>
+</ul>
+<figure>
+  <img src="wc_fsm.png">
+  <figcaption><p><code>wc</code> as a FSM</p>
+</figcaption>
+</figure>
+<table><thead><tr><th align="center">State</th><th><code>A-Za-z</code></th><th><code>\n</code></th><th>Other</th></tr></thead><tbody>
+<tr><td align="center">0</td><td>1: <code>++wc</code>, <code>++cc</code></td><td>0: <code>++lc</code>, <code>++cc</code></td><td>0: <code>++cc</code></td></tr>
+<tr><td align="center">1</td><td>1: <code>++cc</code></td><td>0: <code>++lc</code>, <code>++cc</code></td><td>0: <code>++cc</code></td></tr>
+</tbody></table>
+<h2 id="while-switch-idiom"><a href="#while-switch-idiom" aria-label="anchor link for while-switch-idiom">##</a> 
+While-Switch Idiom</h2>
+<ul>
+<li>While you have input, <strong>switch on your state</strong>, and then modify your state and
+other variables based off your given state and the input.
+<ul>
+<li>Switching on state doesn't really matter, but Dr. Heckman cares.</li>
+</ul>
+</li>
+</ul>
+<pre style="background-color:#002b36;">
+<code class="language-no-highlight" data-lang="no-highlight"><span style="color:#839496;">while you have input:
+  switch(STATE):
+    case STATE_0: ...
+    case STATE_1: ...
+    case STATE_2: ...
+    case STATE_3: ...
+</span></code></pre><pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#586e75;">// Replicates wc functionality
+</span><span style="color:#859900;">while </span><span style="color:#657b83;">((</span><span style="color:#839496;">next </span><span style="color:#657b83;">=</span><span style="color:#839496;"> br.</span><span style="color:#b58900;">read</span><span style="color:#657b83;">()) !=</span><span style="color:#839496;"> −</span><span style="color:#6c71c4;">1</span><span style="color:#657b83;">) {
+</span><span style="color:#839496;">  ch </span><span style="color:#657b83;">= (</span><span style="color:#268bd2;">char</span><span style="color:#657b83;">)</span><span style="color:#839496;"> next;
+  </span><span style="color:#859900;">switch </span><span style="color:#657b83;">(</span><span style="color:#839496;">state</span><span style="color:#657b83;">) {
+    </span><span style="color:#859900;">case </span><span style="color:#6c71c4;">0</span><span style="color:#859900;">:
+      if </span><span style="color:#657b83;">(</span><span style="color:#839496;">ch </span><span style="color:#657b83;">== </span><span style="color:#839496;">&#39;</span><span style="color:#dc322f;">\n</span><span style="color:#839496;">&#39;</span><span style="color:#657b83;">) {
+        </span><span style="color:#859900;">++</span><span style="color:#839496;">lc;
+        </span><span style="color:#859900;">++</span><span style="color:#839496;">cc;
+      </span><span style="color:#657b83;">} </span><span style="color:#859900;">else if </span><span style="color:#657b83;">(</span><span style="color:#859900;">Character</span><span style="color:#839496;">.</span><span style="color:#b58900;">isLetter</span><span style="color:#657b83;">(</span><span style="color:#839496;">ch</span><span style="color:#657b83;">)) {
+</span><span style="color:#839496;">        state </span><span style="color:#657b83;">= </span><span style="color:#6c71c4;">1</span><span style="color:#839496;">;
+        </span><span style="color:#859900;">++</span><span style="color:#839496;">wc;
+        </span><span style="color:#859900;">++</span><span style="color:#839496;">cc;
+      </span><span style="color:#657b83;">} </span><span style="color:#859900;">else </span><span style="color:#657b83;">{
+        </span><span style="color:#859900;">++</span><span style="color:#839496;">cc;
+      </span><span style="color:#657b83;">}
+      </span><span style="color:#859900;">break</span><span style="color:#839496;">;
+
+    </span><span style="color:#859900;">case </span><span style="color:#6c71c4;">1</span><span style="color:#859900;">:
+      if </span><span style="color:#657b83;">(</span><span style="color:#839496;">ch </span><span style="color:#657b83;">== </span><span style="color:#839496;">&#39;</span><span style="color:#dc322f;">\n</span><span style="color:#839496;">&#39;</span><span style="color:#657b83;">) {
+</span><span style="color:#839496;">        state </span><span style="color:#657b83;">= </span><span style="color:#6c71c4;">0</span><span style="color:#839496;">;
+        </span><span style="color:#859900;">++</span><span style="color:#839496;">lc;
+        </span><span style="color:#859900;">++</span><span style="color:#839496;">cc;
+      </span><span style="color:#657b83;">} </span><span style="color:#859900;">else if </span><span style="color:#657b83;">(</span><span style="color:#859900;">Character</span><span style="color:#839496;">.</span><span style="color:#b58900;">isLetter</span><span style="color:#657b83;">(</span><span style="color:#839496;">ch</span><span style="color:#657b83;">)) {
+        </span><span style="color:#859900;">++</span><span style="color:#839496;">cc;
+      </span><span style="color:#657b83;">} </span><span style="color:#859900;">else </span><span style="color:#657b83;">{
+</span><span style="color:#839496;">        state </span><span style="color:#657b83;">= </span><span style="color:#6c71c4;">0</span><span style="color:#839496;">;
+        </span><span style="color:#859900;">++</span><span style="color:#839496;">cc;
+      </span><span style="color:#657b83;">}
+      </span><span style="color:#859900;">break</span><span style="color:#839496;">;
+
+    </span><span style="color:#93a1a1;">default</span><span style="color:#859900;">:
+      System</span><span style="color:#839496;">.out.</span><span style="color:#b58900;">println</span><span style="color:#657b83;">(
+        </span><span style="color:#839496;">&quot;</span><span style="color:#2aa198;">Invalid state: </span><span style="color:#839496;">&quot; </span><span style="color:#657b83;">+</span><span style="color:#839496;"> state
+      </span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+  </span><span style="color:#657b83;">}
+}
+</span></code></pre><h2 id="object-oriented-implementation"><a href="#object-oriented-implementation" aria-label="anchor link for object-oriented-implementation">##</a> 
+Object Oriented Implementation</h2>
+<p>This only works for object-oriented paradigms.</p>
+<p>Use the <a href="https://elihunter173.com/notes/1s/csc216/#state-pattern">state pattern</a>. This is useful if all your states have
+to handle all/most types of input.</p>
+<p>This works with bounded recursive loops. (This is when a state has some data,
+which is formally illegal but simplifies implementation.)</p>
+<h2 id="functional-implementation"><a href="#functional-implementation" aria-label="anchor link for functional-implementation">##</a> 
+Functional Implementation</h2>
+<p>This only works with functional paradigms.</p>
+<p>Instead of having objects that implement a common interface, you can have a set
+of functions that represent state. Each function knows how to handle an
+arbitrary input, parses it, and returns the appropriate state (function).</p>
+<p>You set the current function to the call of the current function with the
+input.</p>
+<pre style="background-color:#002b36;">
+<code><span style="color:#839496;">StateFunction curr = defaultStateFunction
+while input:
+  // curr returns a StateFunction
+  curr = curr(input)
+</span></code></pre>
+<p>This does not work with bounded recursive loops.</p>
+<h1 id="recursion"><a href="#recursion" aria-label="anchor link for recursion">#</a> 
+Recursion</h1>
+<ul>
+<li>Recursion: Defining something using itself.</li>
+<li><em>Why use it?</em>
+<ul>
+<li>It works better for some things. For example, some things are inherently</li>
+<li>recursive.</li>
+<li>Trees are inherently recursive (so are files).</li>
+<li>Some searches are inherently recursive.</li>
+<li>Some functional languages use only recursion. (e.g. Haskell, Scheme, etc.)</li>
+<li>It can be mathematically proved to work much more easily through induction.</li>
+<li>It's really elegant.</li>
+</ul>
+</li>
+<li><em>How do you write recursively?</em>
+<ul>
+<li>You just treat the problem as if you've already solved a smaller but
+<em>completely</em> identical problem.</li>
+<li>Try to break the problem into a smaller but identical problem.</li>
+</ul>
+</li>
+</ul>
+<h2 id="verification-methods"><a href="#verification-methods" aria-label="anchor link for verification-methods">##</a> 
+Verification Methods</h2>
+<ul>
+<li>Static Analysis (Static): Check for various style and general techniques.</li>
+<li>Testing (Dynamic): Actually run your code and make sure it works.</li>
+<li>Formal Analysis (Static): Mathematically prove this program calculates
+correctly (normally using discrete mathematics).
+<ul>
+<li>It is harder to prove that it does what the client whats for the given
+inputs.</li>
+<li>You normally use mathematical induction.</li>
+<li><em>Mathematically Induction?</em> You use your basis step (base case) followed
+by inductive step (recursive).</li>
+<li>You have to correctly identify the recursive/inductive step.</li>
+</ul>
+</li>
+</ul>
+<h2 id="important-notes"><a href="#important-notes" aria-label="anchor link for important-notes">##</a> 
+Important Notes</h2>
+<ul>
+<li>Calling a function takes over the flow of control, unless you are using
+forking / multiprocessing / multithreading.</li>
+<li>Sometimes recursive solutions are very inefficient if they need to calculate
+values repetitively or need to make several function calls for something
+trivial.</li>
+</ul>
+<h2 id="types-of-recursive-functions"><a href="#types-of-recursive-functions" aria-label="anchor link for types-of-recursive-functions">##</a> 
+Types of Recursive Functions</h2>
+<ul>
+<li>Linear/Trivial: The function only calls itself once. Can almost always be
+iterative.
+<ul>
+<li>Often $O(n)$</li>
+</ul>
+</li>
+<li>Branching: The function calls multiple instances of itself. Often must be
+recursive.
+<ul>
+<li>Sometimes $O(n^2)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="creating-a-recursive-solution"><a href="#creating-a-recursive-solution" aria-label="anchor link for creating-a-recursive-solution">##</a> 
+Creating a Recursive Solution</h2>
+<ul>
+<li>Base Case(s): A trivial example of the problem with a known solution.
+<ul>
+<li>Try to choose the cleanest, best, simplest base case.</li>
+</ul>
+</li>
+<li>Recursive Case: A more complex example that can be solved by solving a
+simpler version and then doing something with it.</li>
+<li>Your function must have a size parameter, so that it can end. It should be
+decreasing (but not necessarily monotonically).</li>
+<li>Check the size parameter, it it is small, solve the base case. If not, solve
+the recursive case.</li>
+</ul>
+<h2 id="public-private-pairs-in-recursive-methods-functions"><a href="#public-private-pairs-in-recursive-methods-functions" aria-label="anchor link for public-private-pairs-in-recursive-methods-functions">##</a> 
+Public-Private Pairs in Recursive Methods/Functions</h2>
+<p>Sometimes you need more information to accumulate in a recursive method that
+always has the same default value. To do this, you create a public method that
+has only a restricted number of parameters. This public method then calls on
+the private method with the &quot;default value&quot;.</p>
+<p>This is essentially a workaround for not having true default values and also
+making sure your clients don't have to worry about that.</p>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#93a1a1;">public</span><span style="color:#839496;"> void </span><span style="color:#b58900;">crawl</span><span style="color:#657b83;">(</span><span style="color:#859900;">File</span><span style="color:#839496;"> f</span><span style="color:#657b83;">) {
+  </span><span style="color:#b58900;">crawl</span><span style="color:#657b83;">(</span><span style="color:#859900;">File</span><span style="color:#839496;">, &quot;&quot;</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+</span><span style="color:#657b83;">}
+
+</span><span style="color:#93a1a1;">public</span><span style="color:#839496;"> void </span><span style="color:#b58900;">crawl</span><span style="color:#657b83;">(</span><span style="color:#859900;">File</span><span style="color:#839496;"> f, </span><span style="color:#859900;">String</span><span style="color:#839496;"> indent</span><span style="color:#657b83;">) {
+  </span><span style="color:#859900;">System</span><span style="color:#839496;">.out.</span><span style="color:#b58900;">println</span><span style="color:#657b83;">(</span><span style="color:#839496;">f</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+  </span><span style="color:#859900;">if </span><span style="color:#657b83;">(</span><span style="color:#839496;">f.</span><span style="color:#b58900;">isDirectory</span><span style="color:#657b83;">()) {
+    </span><span style="color:#859900;">for </span><span style="color:#657b83;">(</span><span style="color:#859900;">File</span><span style="color:#839496;"> subfile </span><span style="color:#859900;">:</span><span style="color:#839496;"> f.</span><span style="color:#b58900;">listFiles</span><span style="color:#657b83;">()) {
+      </span><span style="color:#b58900;">crawl</span><span style="color:#657b83;">(</span><span style="color:#839496;">subfile, indent </span><span style="color:#657b83;">+ </span><span style="color:#839496;">&quot;  &quot;</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+    </span><span style="color:#657b83;">}
+  }
+}
+</span></code></pre><h2 id="using-control-flow-as-a-data-structure"><a href="#using-control-flow-as-a-data-structure" aria-label="anchor link for using-control-flow-as-a-data-structure">##</a> 
+Using Control Flow as a Data Structure</h2>
+<p>Using recursion, you can use the method call stack as a data structure. <em>How?</em>
+You store a local variable in the method cal, call the method recursively, and
+then do something with the local variable after the recursive method completes.</p>
+<pre style="background-color:#002b36;">
+<code class="language-java" data-lang="java"><span style="color:#586e75;">// This only works with synchronous method calls
+</span><span style="color:#839496;">void </span><span style="color:#b58900;">reverseLines</span><span style="color:#657b83;">(</span><span style="color:#859900;">Scanner</span><span style="color:#839496;"> input</span><span style="color:#657b83;">) {
+  </span><span style="color:#859900;">if </span><span style="color:#657b83;">(</span><span style="color:#839496;">input.</span><span style="color:#b58900;">hasNextLine</span><span style="color:#657b83;">()) {
+    </span><span style="color:#586e75;">// &quot;Push&quot; something onto the &quot;stack&quot;
+    </span><span style="color:#859900;">String</span><span style="color:#839496;"> line </span><span style="color:#657b83;">=</span><span style="color:#839496;"> input.</span><span style="color:#b58900;">nextLine</span><span style="color:#657b83;">()</span><span style="color:#839496;">;
+    </span><span style="color:#586e75;">// Add a new method to the call stack
+    </span><span style="color:#b58900;">reverseLines</span><span style="color:#657b83;">(</span><span style="color:#839496;">input</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+    </span><span style="color:#586e75;">// &quot;Pop&quot; something from the &quot;stack&quot;
+    </span><span style="color:#859900;">System</span><span style="color:#839496;">.out.</span><span style="color:#b58900;">println</span><span style="color:#657b83;">(</span><span style="color:#839496;">line</span><span style="color:#657b83;">)</span><span style="color:#839496;">;
+  </span><span style="color:#657b83;">}
+}
+</span></code></pre>
+<ul>
+<li>Cohesion: How much one class represents a single abstraction. (Allows for
+reuse!)</li>
+<li>Coupling: The amount with which one program calls upon another.
+<ul>
+<li>Internal Coupling: One class modifying another's data.</li>
+<li>Parameter Coupling: Using services provided by another class.</li>
+</ul>
+</li>
+<li>Encapsulation: A piece of software having a small, controlled, logical number
+of ways to interact with it.</li>
+<li>Software Artifacts: Any documentation. Design documents, class diagrams,
+other UML diagrams.</li>
+<li>Serialization: The process of saving a Java object's state to a file.</li>
+<li>Deserialization: The process of reading a Java object's state from a file.</li>
+</ul>
+<h1 id="misc-1"><a href="#misc-1" aria-label="anchor link for misc-1">#</a> 
+Misc</h1>
+<h2 id="horner-s-rule"><a href="#horner-s-rule" aria-label="anchor link for horner-s-rule">##</a> 
+Horner's Rule</h2>
+<ul>
+<li>Horner's Rule: A method for parsing numbers as polynomials.
+<ul>
+<li>$1092 = (((0 + 1)x + 0)x + 9) + 2$ where $x$ is the given base</li>
+</ul>
+</li>
+<li>Why is Horner's rule useful? Because it can be used to convert ASCII into
+numbers, since ASCII digits are all consecutive in terms of value.</li>
+<li>Summary: Read value, shift by base, repeat.</li>
+</ul>
+</article>
+
+  </body>
+</html>

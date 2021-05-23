@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      Eli
+      
+      | MA 225: Foundations of Advanced Mathematics
+      
+    </title>
+    <link rel="stylesheet" href="/styles.css">
+
+    
+    
+    
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        }
+      }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+  </head>
+
+  <body>
+    <nav>
+      <h2><a href="/">~eli</a></h2>
+      <ul>
+        <li><a href="/blog/">blog</a></li>
+        <li><a href="/notes/">notes</a></li>
+        <li><a href="/elihunter173_resume.pdf">résumé</a></li>
+      </ul>
+    </nav>
+
+    
+<header>
+  <h1 class="title">MA 225: Foundations of Advanced Mathematics</h1>
+  
+  Instructor: Dr. Fulp | Semester: Spring 2019
+
+  
+  <h3>Table of Contents</h3>
+  <ul>
+    
+    <li>
+      <a href="#vocabulary">Vocabulary</a>
+    </li>
+    
+    <li>
+      <a href="#logical-equivalences">Logical Equivalences</a>
+    </li>
+    
+    <li>
+      <a href="#set-equivalences">Set Equivalences</a>
+    </li>
+    
+    <li>
+      <a href="#argot-of-logical-statements">Argot of Logical Statements</a>
+    </li>
+    
+  </ul>
+  
+</header>
+
+<article><p>Sadly I did not scan in my paper notes for this class, so all I have is this
+small cheatsheet.</p>
+<h1 id="vocabulary"><a href="#vocabulary" aria-label="anchor link for vocabulary">#</a> 
+Vocabulary</h1>
+<ul>
+<li>Axiom: A statement simply accepted to be true.</li>
+<li>Theorem: A statement proved to be true using the axioms.</li>
+<li>Lemma: A small theorem used in a specific proof to make the proof
+cleaner/easier.</li>
+<li>Proposition: A sentence with one of two truth values.
+<ul>
+<li>&quot;The sky is blue.&quot;</li>
+<li>&quot;4 divides 5.&quot;</li>
+</ul>
+</li>
+<li>Universe ($\mathcal{U}$): All possible elements within the realm of
+discussion.</li>
+<li>Open Sentence: A propsoition dependent on a variable within the universe.</li>
+<li>Universal Quantifier ($\forall$): $(\forall x) P(x)$ is true iff the truth
+set of $P(x)$ is $\mathcal{U}$.</li>
+<li>Existential Quantifier ($\exists$): $(\exists x) P(x)$ is true iff the truth
+set of $P(x)$ is non-empty.</li>
+<li>Unique Quantifier ($\exists!$): $(\exists! x) P(x)$ is true iff the truth set
+of $P(x)$ contains only one value.</li>
+<li>Set: A collection of unique elements that cannot contain itself. (Sets can be
+elements!)</li>
+<li>Argot: The standard human language used to describe logical statements.</li>
+</ul>
+<h1 id="logical-equivalences"><a href="#logical-equivalences" aria-label="anchor link for logical-equivalences">#</a> 
+Logical Equivalences</h1>
+<p>Let $P$, $Q$, and $R$ be propositions about elements $x$ in universe
+$\mathcal{U}$. We write $P(x)$ iff proposition $P$ holds for some specific
+element $x \in \mathcal{U}$. If we instead write simply $P$, we consider some
+specific element $x \in \mathcal{U}$ where $P(x)$ holds.</p>
+<ul>
+<li><strong>Double Negation:</strong>
+<ul>
+<li>$P \iff \neg(\neg P)$</li>
+</ul>
+</li>
+<li><strong>Commutative Law:</strong>
+<ul>
+<li>$P \lor Q \iff Q \lor P$</li>
+<li>$P \land Q \iff Q \land P$</li>
+</ul>
+</li>
+<li><strong>Associative Law:</strong>
+<ul>
+<li>$P \lor (Q \lor R) \iff (P \lor Q) \lor R$</li>
+<li>$P \land (Q \land R) \iff (P \land Q) \land R$</li>
+</ul>
+</li>
+<li><strong>Distributive Law:</strong>
+<ul>
+<li>$P \land (Q \lor R) \iff (P \land Q) \lor (P \land R)$</li>
+<li>$P \lor (Q \land R) \iff (P \lor Q) \land (P \lor R)$</li>
+</ul>
+</li>
+<li><strong>DeMorgan's Law:</strong>
+<ul>
+<li>$\neg (P \land Q) \iff \neg P \lor \neg Q$</li>
+<li>$\neg (P \lor Q) \iff \neg P \land \neg Q$</li>
+</ul>
+</li>
+<li><strong>Implication Properties:</strong>
+<ul>
+<li>$P \implies Q \iff \neg P \lor Q$</li>
+<li>$\neg (P \implies Q) \iff P \land \neg Q$</li>
+<li>$\neg (P \land Q) \iff P \implies \neg Q$</li>
+<li>$\neg (P \land Q) \iff Q \implies \neg P$</li>
+<li>$(P \iff Q) \iff (P \implies Q) \land (Q \implies P)$</li>
+<li>$P \implies (P \implies R) \iff (P \land Q) \implies R$</li>
+<li>$P \implies (P \land R) \iff (P \implies Q) \land (P \implies R)$</li>
+<li>$(P \land Q) \implies R \iff (P \implies R) \land (Q \implies R)$</li>
+<li><strong>Contraposition:</strong>
+<ul>
+<li>$P \implies Q \iff \neg Q \implies \neg P$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Quantifiers and Negation:</strong> Normally, this would be written out in English
+instead of being symbolic. However, to avoid ambiguity, we write this
+symbolically.
+<ul>
+<li>$\neg [ (\exists x) P(x)] \iff (\forall x)[\neg P(x)]$</li>
+<li>$\neg [ (\forall x) P(x)] \iff (\exists x)[\neg P(x)]$</li>
+</ul>
+</li>
+</ul>
+<h1 id="set-equivalences"><a href="#set-equivalences" aria-label="anchor link for set-equivalences">#</a> 
+Set Equivalences</h1>
+<p>Let $A$ and $B$ be sets in some universe $\mathcal{U}$.</p>
+<ul>
+<li>$A^c = \{ x \in \mathcal{U} : x \notin A \}$</li>
+<li>$A - B = A \backslash B = A \cup B^c$</li>
+<li>$A \subset B = B^c \subset A^c$</li>
+<li>DeMorgan's Law:
+<ul>
+<li>$\left(\underset{ A \subseteq \mathcal{U} }{\bigcap} \mathcal{U}\right)^c =
+\underset{ A \subseteq \mathcal{U} }{\bigcup} (A^c)$</li>
+<li>$\left(\underset{ A \subseteq \mathcal{U} }{\bigcup} \mathcal{U}\right)^c =
+\underset{ A \subseteq \mathcal{U} }{\bigcap} (A^c)$</li>
+</ul>
+</li>
+</ul>
+<h1 id="argot-of-logical-statements"><a href="#argot-of-logical-statements" aria-label="anchor link for argot-of-logical-statements">#</a> 
+Argot of Logical Statements</h1>
+<p>Let $P$ and $Q$ be propositions.</p>
+<ul>
+<li>$P \implies Q$
+<ul>
+<li>$P$ implies $Q$.</li>
+<li>If $P$, then $Q$.</li>
+<li>$Q$, if $P$.</li>
+<li>$P$ only if $Q$.</li>
+<li>$Q$, when $P$.</li>
+<li>$Q$ whenever $P$.</li>
+<li>$P$ is sufficient for $Q$</li>
+<li>$Q$ is necessary for $P$.</li>
+<li>$Q$ is a necessary consequent of $P$.</li>
+</ul>
+</li>
+<li>$P \iff Q$
+<ul>
+<li>$P$ implies $Q$, and conversely.</li>
+<li>$P$ if and only if $Q$.</li>
+<li>$P$ iff $Q$.</li>
+<li>$P$ is equivalent to $Q$.</li>
+<li>$P$ is necessary and sufficient for $Q$.</li>
+</ul>
+</li>
+</ul>
+</article>
+
+  </body>
+</html>
